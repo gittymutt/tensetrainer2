@@ -1,12 +1,16 @@
+// make nextSentence() function to put new sentence
+// do something about irregulars? maybe that's in other
+// function
+
 var form = {
   wCount: 0,
   fCount: 0,
   sCount: 0,
   sentenceCollection: [],
   sentence: {},
-  currentForm: []
+  currentForm: [],
+  finished: false
 };
-
 
 
 
@@ -48,8 +52,6 @@ var form = {
           theRest: "English."
         }];
 
-    this.sentence = this.sentenceCollection.pop();
-    this.sentence = this.sentenceCollection.pop();
     switch(this.sentence.subjNum) {
       case ENUM.I:
         bePresForm = ENUM.am;
@@ -65,7 +67,6 @@ var form = {
       case ENUM.pl:
     }
 
-    console.log("doform: " + doForm);
 
     var simplePresNeg = [ENUM.subj, doForm, ENUM.not, ENUM.BFV];
     simplePresNeg.name = "Simple present, negative";
@@ -97,6 +98,10 @@ var form = {
     var presProgQ = [bePresForm, ENUM.subj, ENUM.BFV, ENUM.ing];
     presProgQ.name = "Present progressive, question";
 
+    this.currentForm = [
+      simplePresAffirm, simplePresNeg, simplePresQ,
+      presProgAffirm, presProgNeg, presProgQ,
+      simplePastAffirm, simplePastNeg, simplePastQ];
   }
 
 
@@ -106,15 +111,43 @@ var form = {
 
 
 form.nextWord =  function () {
-  this.wCount++;
-  console.log(this.sentence);
+  if (this.finished) { return; }
+  console.log("sentenceCOll: " + this.sentenceCollection.length);
+  var currentWord = this.currentForm[this.fCount][this.wCount];
+  // if reach the end of sentence, advance to next form
+  // set word counter to 0
+  if (this.wCount ==
+     this.currentForm[this.fCount].length) {
+       this.fCount++;
+       this.wCount = 0;
+       // if reach end of form, get new sentence
+       // set form count to 0
+       console.log("fCount: " + this.fCount);
+       if (this.fCount ===
+          this.currentForm.length) {
+            this.fCount = 0;
+
+            this.sentence = this.sentenceCollection.pop();
+            if (this.sentenceCollection.length === 0) {
+              this.finished = true;
+              console.log("feenieeesh!!!!!!!!!!!!!!");
+            }
+            console.log("New sentence<<<<<<<<<<<<<<<<<<<<<<<<<");
+            console.log(this.sentence);
+          }
+
+     }
+console.log(this.currentForm[this.fCount][this.wCount]);
+  this.wCount++;  // advance to next word
+
 }
 
 form.getWord = function () {
-  console.log(this.wCount);
-}
 
+}
+/*
 form.init();
-form.getWord();
-form.nextWord();
-form.getWord();
+for (var i=0;i<200;i++) {
+  form.nextWord();
+}
+*/
