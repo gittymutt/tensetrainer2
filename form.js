@@ -4,7 +4,10 @@ var form = {
   sCount: 0,
   sentenceCollection: [],
   sentence: [],
-  currentForm: []
+  currentForm: [],
+  newSentence: false,
+  newForm: false,
+  done: false
 };
 
 
@@ -50,7 +53,20 @@ var form = {
     var bePastForm = ENUM.were;
     var haveForm = ENUM.have;
 
+    console.log(this.sentenceCollection);
+    if (this.sentenceCollection.length < 1) {
+      console.log("DONE!!!!!!!!!!!!!!!!!");
+      this.done = true;
+      return false;
+    }
     this.sentence = this.sentenceCollection.pop();
+    /*
+    if (this.sentence == undefined) {
+      console.log("nothing in sentence");
+      return true;
+    }
+    */
+
     switch(this.sentence.subjNum) {
       case ENUM.I:
         bePresForm = ENUM.am;
@@ -66,7 +82,7 @@ var form = {
       case ENUM.pl:
     }
 
-    console.log("doform: " + doForm);
+
 
     var simplePresAffirm;
     if (doForm === ENUM.does) {
@@ -104,7 +120,7 @@ var form = {
                       simplePastAffirm, simplePastNeg, simplePastQ,
                        presProgAffirm, presProgNeg, presProgQ];
 
-
+    return true;
   }
 
 
@@ -117,21 +133,32 @@ form.getPosition = function () {
 
 
 form.getWord = function () {
+  this.newSentence = false;
+  this.newForm = false;
   console.log(this.sentence[this.fCount][this.wCount]);
+  console.log(this.done);
   this.wCount++;
   if (this.wCount === this.sentence[this.fCount].length) {
-    console.log("Got to the end of sentencf");
+    console.log("Got to the end of sentence");
     this.wCount = 0;
+    this.newForm = true;
     this.fCount++;
+    if (this.fCount === this.sentence.length) {
+      this.fCount = 0;
+      this.newSentence = true;
+      if (this.getNextSentence() == undefined) {
+        console.log("end of everthing!!!!!!!");
+      }
+
+    }
   }
 }
 
 form.init();
 form.getNextSentence();
-console.log(form.sentence);
-
-for (var i=0; i<20; i++) {
-
-  console.log(form.getPosition());
+while (!form.done) {
   form.getWord();
+  console.log(form.getPosition());
 }
+
+console.log("got to the end safe and dsound");
