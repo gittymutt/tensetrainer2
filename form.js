@@ -61,6 +61,7 @@ var form = {
         // Get first form ready for user. User only has to call
 
         this.getNextSentence();
+
    }
 
    form.getNextSentence = function () {
@@ -80,6 +81,15 @@ var form = {
     }
     this.sentence = this.sentenceCollection.pop();
 
+    console.log("ingFOrm is: " + this.sentence['ingForm']);
+    this.ingForm = this.sentence['ingForm'];
+    this.isAction = this.sentence['isAction'];
+    this.SPast = this.sentence['SPast'];
+    this.ingForm = this.sentence['ingForm'];
+    this.theRest = this.sentence['theRest'];
+    this.BFV = this.sentence['BFV'];
+
+    console.log("word forms: " + this.ingForm + this.isAction + this.SPast + this.theRest + this.BFV);
 
     switch(this.sentence.subjNum) {
       case ENUM.I:
