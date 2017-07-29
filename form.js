@@ -74,14 +74,12 @@ var form = {
     var bePastForm = ENUM.were;
     var haveForm = ENUM.have;
 
-    //console.log(this.sentenceCollection);
     if (this.sentenceCollection.length < 1) {
       this.done = true;
       return false;
     }
     this.sentence = this.sentenceCollection.pop();
 
-    //console.log("ingFOrm is: " + this.sentence['ingForm']);
     this.ingForm = this.sentence['ingForm'];
     this.isAction = this.sentence['isAction'];
     this.SPast = this.sentence['SPast'];
@@ -89,7 +87,6 @@ var form = {
     this.theRest = this.sentence['theRest'];
     this.BFV = this.sentence['BFV'];
 
-    //console.log("word forms: " + this.ingForm + this.isAction + this.SPast + this.theRest + this.BFV);
 
     switch(this.sentence.subjNum) {
       case ENUM.I:
@@ -145,7 +142,6 @@ var form = {
                        presProgAffirm, presProgNeg, presProgQ];
 
     this.formName = this.sentence[this.fCount]['name'];
-    //console.log("formname in getNextSentence(): " + this.fCount + this.formName);
     return true;
   }
 
@@ -165,12 +161,9 @@ form.getWord = function () {
   this.newForm = false;
 
 
-  ///this.formName = this.sentence[this.fCount]['name'];
-  //console.log(this.sentence[this.fCount][this.wCount]);
   wordValue = this.sentence[this.fCount][this.wCount];
   this.wCount++;
   if (this.wCount === this.sentence[this.fCount].length) {
-    //console.log("Got to the end of sentence");
     this.wCount = 0;
     this.newForm = true;
     this.fCount++;
@@ -181,7 +174,7 @@ form.getWord = function () {
       this.newSentence = true;
 
       this.getNextSentence();
-      
+
     }
     this.formName = this.sentence[this.fCount]['name']; // to display tense and type of sentence
 
