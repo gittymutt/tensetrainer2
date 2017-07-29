@@ -1,4 +1,10 @@
 
+// To use form object, call init() and then use getWord()
+// to get next word. Use newForm, newSentence and done
+// properties to keep track of where you are.
+
+
+
 var form = {
   wCount: 0,
   fCount: 0,
@@ -51,6 +57,10 @@ var form = {
           ingForm: "studying",
           theRest: "English."
         }];
+
+        // Get first form ready for user. User only has to call
+
+        this.getNextSentence();
    }
 
    form.getNextSentence = function () {
@@ -172,7 +182,6 @@ form.getWord = function () {
 
 
 form.init();
-form.getNextSentence(); /// put this first call into init() ?
 
 console.log("form name at first: " + form.formName);
 while (!form.done) {
