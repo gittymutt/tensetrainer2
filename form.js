@@ -1,3 +1,4 @@
+
 var form = {
   wCount: 0,
   fCount: 0,
@@ -6,7 +7,14 @@ var form = {
   newSentence: false,
   newForm: false,
   done: false,
-  formName: {}
+  formName: {},
+  isIrreg: false,
+  isAction: true,
+  Spast: "",
+  ingForm: "",
+  theRest: "",
+  BFV: ""
+
 };
 
 
@@ -164,7 +172,8 @@ form.getWord = function () {
 
 
 form.init();
-form.getNextSentence();
+form.getNextSentence(); /// put this first call into init() ?
+
 console.log("form name at first: " + form.formName);
 while (!form.done) {
   if (form.newForm) {console.log(form.formName);}
