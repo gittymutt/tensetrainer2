@@ -127,12 +127,15 @@ form.getPosition = function () {
 
 // must make a temp variable and return the current word at the end of function
 form.getWord = function () {
+  var wordValue;
+
   this.newSentence = false;
   this.newForm = false;
 
 
   ///this.formName = this.sentence[this.fCount]['name'];
-  console.log(this.sentence[this.fCount][this.wCount]);
+  //console.log(this.sentence[this.fCount][this.wCount]);
+  wordValue = this.sentence[this.fCount][this.wCount];
   this.wCount++;
   if (this.wCount === this.sentence[this.fCount].length) {
     //console.log("Got to the end of sentence");
@@ -152,6 +155,7 @@ form.getWord = function () {
     this.formName = this.sentence[this.fCount]['name']; // to display tense and type of sentence
 
   }
+  return wordValue;
 }
 
 form.init();
@@ -160,7 +164,7 @@ console.log("form name at first: " + form.formName);
 while (!form.done) {
   if (form.newForm) {console.log(form.formName);}
   if (form.newSentence) {console.log("new sentence");}
-  form.getWord();
+  console.log(" returned from getWord(): " + form.getWord());
   console.log(form.getPosition());
 }
 
