@@ -3,7 +3,7 @@ var form = {
   fCount: 0,
   sCount: 0,
   sentenceCollection: [],
-  sentence: {},
+  sentence: [],
   currentForm: []
 };
 
@@ -12,12 +12,6 @@ var form = {
 
 
   form.init = function () {
-
-    var doForm = ENUM.do;
-    var bePresForm = ENUM.are;
-    var bePastForm = ENUM.were;
-    var haveForm = ENUM.have;
-
     // get this from another class later
     this.sentenceCollection =
         [{Subj: "Poseurs",
@@ -47,8 +41,15 @@ var form = {
           ingForm: "studying",
           theRest: "English."
         }];
+   }
 
-    this.sentence = this.sentenceCollection.pop();
+   form.getNextSentence = function () {
+     console.log("getting next sentencej");
+    var doForm = ENUM.do;
+    var bePresForm = ENUM.are;
+    var bePastForm = ENUM.were;
+    var haveForm = ENUM.have;
+
     this.sentence = this.sentenceCollection.pop();
     switch(this.sentence.subjNum) {
       case ENUM.I:
@@ -67,10 +68,6 @@ var form = {
 
     console.log("doform: " + doForm);
 
-    var simplePresNeg = [ENUM.subj, doForm, ENUM.not, ENUM.BFV];
-    simplePresNeg.name = "Simple present, negative";
-    var simplePresQ = [doForm, ENUM.subj, ENUM.BFV];
-    simplePresQ.name = "Simple present, yes/no question";
     var simplePresAffirm;
     if (doForm === ENUM.does) {
         simplePresAffirm = [ENUM.subj, ENUM.BFV, ENUM.s];
@@ -78,7 +75,13 @@ var form = {
         simplePresAffirm = [ENUM.subj, ENUM.BFV ];
     }
     simplePresAffirm.name = "Simple present, affirmative";
-    var simplePastAffirm;
+
+    var simplePresNeg = [ENUM.subj, doForm, ENUM.not, ENUM.BFV];
+    simplePresNeg.name = "Simple present, negative";
+
+    var simplePresQ = [doForm, ENUM.subj, ENUM.BFV];
+    simplePresQ.name = "Simple present, yes/no question";
+        var simplePastAffirm;
     if (this.sentence.isIrreg) {
       simplePastAffirm = [ENUM.subj, ENUM.irreg];
     } else {
@@ -97,8 +100,12 @@ var form = {
     var presProgQ = [bePresForm, ENUM.subj, ENUM.BFV, ENUM.ing];
     presProgQ.name = "Present progressive, question";
 
-  }
+    this.sentence = [simplePresAffirm, simplePresNeg, simplePresQ,
+                      simplePastAffirm, simplePastNeg, simplePastQ,
+                       presProgAffirm, presProgNeg, presProgQ];
 
+    //console.log(this.sentence);
+  }
 
 
 
@@ -107,14 +114,16 @@ var form = {
 
 form.nextWord =  function () {
   this.wCount++;
-  console.log(this.sentence);
+  //console.log(this.sentence);
 }
 
 form.getWord = function () {
-  console.log(this.wCount);
+  console.log("wCount:  " + this.wCount);
+  console.log(this.sentence[this.fCount][this.wCount]);
 }
 
 form.init();
+form.getNextSentence();
 form.getWord();
 form.nextWord();
 form.getWord();
