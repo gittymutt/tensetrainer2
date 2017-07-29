@@ -190,7 +190,7 @@ form.getWord = function () {
   return wordValue;
 }
 
-
+/*
 form.init();
 
 console.log("form name at first: " + form.formName);
@@ -202,3 +202,4 @@ while (!form.done) {
 }
 
 console.log("got to the end safe and dsound");
+*/
