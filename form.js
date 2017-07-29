@@ -5,7 +5,8 @@ var form = {
   sentence: [],
   newSentence: false,
   newForm: false,
-  done: false
+  done: false,
+  formName: {}
 };
 
 
@@ -45,7 +46,6 @@ var form = {
    }
 
    form.getNextSentence = function () {
-     //console.log("getting next sentencej");
     var doForm = ENUM.do;
     var bePresForm = ENUM.are;
     var bePastForm = ENUM.were;
@@ -53,17 +53,11 @@ var form = {
 
     console.log(this.sentenceCollection);
     if (this.sentenceCollection.length < 1) {
-      console.log("DONE!!!!!!!!!!!!!!!!!");
       this.done = true;
       return false;
     }
     this.sentence = this.sentenceCollection.pop();
-    /*
-    if (this.sentence == undefined) {
-      console.log("nothing in sentence");
-      return true;
-    }
-    */
+
 
     switch(this.sentence.subjNum) {
       case ENUM.I:
@@ -118,6 +112,8 @@ var form = {
                       simplePastAffirm, simplePastNeg, simplePastQ,
                        presProgAffirm, presProgNeg, presProgQ];
 
+    this.formName = this.sentence[this.fCount]['name'];
+    console.log("formname in getNextSentence(): " + this.fCount + this.formName);
     return true;
   }
 
@@ -129,18 +125,22 @@ form.getPosition = function () {
 
 
 
-
+// must make a temp variable and return the current word at the end of function
 form.getWord = function () {
   this.newSentence = false;
   this.newForm = false;
+
+
+  ///this.formName = this.sentence[this.fCount]['name'];
   console.log(this.sentence[this.fCount][this.wCount]);
-  console.log(this.done);
   this.wCount++;
   if (this.wCount === this.sentence[this.fCount].length) {
     //console.log("Got to the end of sentence");
     this.wCount = 0;
     this.newForm = true;
     this.fCount++;
+
+
     if (this.fCount === this.sentence.length) {
       this.fCount = 0;
       this.newSentence = true;
@@ -149,13 +149,16 @@ form.getWord = function () {
       }
 
     }
+    this.formName = this.sentence[this.fCount]['name']; // to display tense and type of sentence
+
   }
 }
 
 form.init();
 form.getNextSentence();
+console.log("form name at first: " + form.formName);
 while (!form.done) {
-  if (form.newForm) {console.log("new form!!!!");}
+  if (form.newForm) {console.log(form.formName);}
   if (form.newSentence) {console.log("new sentence");}
   form.getWord();
   console.log(form.getPosition());
