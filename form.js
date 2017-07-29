@@ -104,26 +104,34 @@ var form = {
                       simplePastAffirm, simplePastNeg, simplePastQ,
                        presProgAffirm, presProgNeg, presProgQ];
 
-    //console.log(this.sentence);
+
   }
 
 
+form.getPosition = function () {
+  return {wCount: this.wCount, fCount: this.fCount};
 
-
-
-
-form.nextWord =  function () {
-  this.wCount++;
-  //console.log(this.sentence);
 }
 
+
+
+
 form.getWord = function () {
-  console.log("wCount:  " + this.wCount);
   console.log(this.sentence[this.fCount][this.wCount]);
+  this.wCount++;
+  if (this.wCount === this.sentence[this.fCount].length) {
+    console.log("Got to the end of sentencf");
+    this.wCount = 0;
+    this.fCount++;
+  }
 }
 
 form.init();
 form.getNextSentence();
-form.getWord();
-form.nextWord();
-form.getWord();
+console.log(form.sentence);
+
+for (var i=0; i<20; i++) {
+
+  console.log(form.getPosition());
+  form.getWord();
+}
