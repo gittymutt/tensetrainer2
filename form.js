@@ -46,6 +46,10 @@ var form = {
    }
 
    form.getNextSentence = function () {
+    var simplePresAffirm, simplePresNeg, simplePresQ;
+    var simplePastAffirm, simplePastNeg, simplePastQ;
+    var presProgAffirm, presProgNeg, presProgQ;
+
     var doForm = ENUM.do;
     var bePresForm = ENUM.are;
     var bePastForm = ENUM.were;
@@ -76,7 +80,7 @@ var form = {
 
 
 
-    var simplePresAffirm;
+
     if (doForm === ENUM.does) {
         simplePresAffirm = [ENUM.subj, ENUM.BFV, ENUM.s];
     } else {
@@ -84,28 +88,28 @@ var form = {
     }
     simplePresAffirm.name = "Simple present, affirmative";
 
-    var simplePresNeg = [ENUM.subj, doForm, ENUM.not, ENUM.BFV];
+    simplePresNeg = [ENUM.subj, doForm, ENUM.not, ENUM.BFV];
     simplePresNeg.name = "Simple present, negative";
 
-    var simplePresQ = [doForm, ENUM.subj, ENUM.BFV];
+    simplePresQ = [doForm, ENUM.subj, ENUM.BFV];
     simplePresQ.name = "Simple present, yes/no question";
-        var simplePastAffirm;
+
     if (this.sentence.isIrreg) {
       simplePastAffirm = [ENUM.subj, ENUM.irreg];
     } else {
       simplePastAffirm = [ENUM.subj, ENUM.BFV, ENUM.ed];
     }
     simplePastAffirm.name = "Simple past, affirmative";
-    var simplePastNeg = [ENUM.subj, ENUM.did, ENUM.not, ENUM.BFV];
+    simplePastNeg = [ENUM.subj, ENUM.did, ENUM.not, ENUM.BFV];
     simplePastNeg.name = "Simple past, negative";
-    var simplePastQ = [ENUM.did, ENUM.subj, ENUM.BFV]
+    simplePastQ = [ENUM.did, ENUM.subj, ENUM.BFV]
     simplePastQ.name = "Simple past, question";
 
-    var presProgAffirm = [ENUM.subj, bePresForm, ENUM.BFV, ENUM.ing];
+    presProgAffirm = [ENUM.subj, bePresForm, ENUM.BFV, ENUM.ing];
     presProgAffirm.name = "Present progressive, affirmative";
-    var presProgNeg = [ENUM.subj, bePresForm, ENUM.not, ENUM.BFV, ENUM.ing];
+    presProgNeg = [ENUM.subj, bePresForm, ENUM.not, ENUM.BFV, ENUM.ing];
     presProgNeg.name = "Present progressive, negative";
-    var presProgQ = [bePresForm, ENUM.subj, ENUM.BFV, ENUM.ing];
+    presProgQ = [bePresForm, ENUM.subj, ENUM.BFV, ENUM.ing];
     presProgQ.name = "Present progressive, question";
 
     this.sentence = [simplePresAffirm, simplePresNeg, simplePresQ,
@@ -157,6 +161,7 @@ form.getWord = function () {
   }
   return wordValue;
 }
+
 
 form.init();
 form.getNextSentence();
