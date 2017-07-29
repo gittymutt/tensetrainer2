@@ -1,10 +1,8 @@
 var form = {
   wCount: 0,
   fCount: 0,
-  sCount: 0,
   sentenceCollection: [],
   sentence: [],
-  currentForm: [],
   newSentence: false,
   newForm: false,
   done: false
@@ -47,7 +45,7 @@ var form = {
    }
 
    form.getNextSentence = function () {
-     console.log("getting next sentencej");
+     //console.log("getting next sentencej");
     var doForm = ENUM.do;
     var bePresForm = ENUM.are;
     var bePastForm = ENUM.were;
@@ -139,7 +137,7 @@ form.getWord = function () {
   console.log(this.done);
   this.wCount++;
   if (this.wCount === this.sentence[this.fCount].length) {
-    console.log("Got to the end of sentence");
+    //console.log("Got to the end of sentence");
     this.wCount = 0;
     this.newForm = true;
     this.fCount++;
@@ -157,6 +155,8 @@ form.getWord = function () {
 form.init();
 form.getNextSentence();
 while (!form.done) {
+  if (form.newForm) {console.log("new form!!!!");}
+  if (form.newSentence) {console.log("new sentence");}
   form.getWord();
   console.log(form.getPosition());
 }
