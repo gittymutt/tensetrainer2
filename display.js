@@ -1,16 +1,17 @@
 var display = {
-  isIrregular: false,
+  isIrreg: false,
   subj: "subjError",
   BFV: "BFVerror",
-  sPast: "sPasterror",
+  Spast: "sPasterror",
   theRest: "theResterror"
 }
 
 display.init = function(myForm) {
-  this.isIrregular = myForm.isIrregular;
-  this.subj = myForm.subj;
-  this.= myForm.isIrregular;
-  this.isIrregular = myForm.isIrregular;
-  this.isIrregular = myForm.isIrregular;
-  console.log(myForm.subj);
+  this.isIrreg = myForm.isIrreg;
+  this.subj = myForm.sentence['Subj'];
+  this.BFV = myForm.BFV;
+  this.sPast = myForm.Spast;
+  this.theRest = myForm.theRest;
+  console.log(myForm.BFV);
+  console.log(this.subj, this.isIrreg, this.BFV, this.sPast, this.theRest);
 }
