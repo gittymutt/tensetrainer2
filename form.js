@@ -4,12 +4,12 @@
 // properties to keep track of where you are.
 
 
-
 var form = {
   wCount: 0,
   fCount: 0,
   sentenceCollection: [],
   sentence: [],
+  formArray: [],
   newSentence: false,
   newForm: false,
   done: false,
@@ -137,11 +137,11 @@ var form = {
     presProgQ = [bePresForm, ENUM.subj, ENUM.BFV, ENUM.ing];
     presProgQ.name = "Present progressive, question";
 
-    this.sentence = [simplePresAffirm, simplePresNeg, simplePresQ,
+    this.formArray = [simplePresAffirm, simplePresNeg, simplePresQ,
                       simplePastAffirm, simplePastNeg, simplePastQ,
                        presProgAffirm, presProgNeg, presProgQ];
 
-    this.formName = this.sentence[this.fCount]['name'];
+    this.formName = this.formArray[this.fCount]['name'];
     return true;
   }
 
@@ -161,22 +161,22 @@ form.getWord = function () {
   this.newForm = false;
 
 
-  wordValue = this.sentence[this.fCount][this.wCount];
+  wordValue = this.formArray[this.fCount][this.wCount];
   this.wCount++;
-  if (this.wCount === this.sentence[this.fCount].length) {
+  if (this.wCount === this.formArray[this.fCount].length) {
     this.wCount = 0;
     this.newForm = true;
     this.fCount++;
 
 
-    if (this.fCount === this.sentence.length) {
+    if (this.fCount === this.formArray.length) {
       this.fCount = 0;
       this.newSentence = true;
 
       this.getNextSentence();
 
     }
-    this.formName = this.sentence[this.fCount]['name']; // to display tense and type of sentence
+    this.formName = this.formArray[this.fCount]['name']; // to display tense and type of sentence
 
   }
   return wordValue;

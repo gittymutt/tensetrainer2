@@ -7,5 +7,10 @@ var display = {
 }
 
 display.init = function(myForm) {
-  console.log(myForm.BFV);
+  this.isIrregular = myForm.isIrregular;
+  this.subj = myForm.subj;
+  this.= myForm.isIrregular;
+  this.isIrregular = myForm.isIrregular;
+  this.isIrregular = myForm.isIrregular;
+  console.log(myForm.subj);
 }
