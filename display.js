@@ -5,6 +5,7 @@ var display = {
   Spast: "sPasterror",
   theRest: "theResterror",
   buttonDiv: document.getElementById('buttons'),
+  descriptionDiv: document.getElementById('description'),
   currentWord: 0
 
 }
@@ -73,4 +74,9 @@ display.buttonPressed = function (userWordID) {
   }
 
   console.log("falsch!!!!!");
+}
+
+display.setUpSentence = function () {
+  this.descriptionDiv.innerText = form.formName;
+  console.log("formname is:" + form.formName);
 }
