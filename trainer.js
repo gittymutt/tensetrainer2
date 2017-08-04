@@ -9,3 +9,4 @@ while (!form.done) {
 }
 
 display.init(form);
+display.setUpButtons();
