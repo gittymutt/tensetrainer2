@@ -4,7 +4,8 @@ var display = {
   BFV: "BFVerror",
   Spast: "sPasterror",
   theRest: "theResterror",
-  buttonDiv: document.getElementById('buttons')
+  buttonDiv: document.getElementById('buttons'),
+  currentWord: 0
 
 }
 
@@ -45,16 +46,31 @@ display.setUpButtons = function() {
 
 
 
+
   buttonArray.forEach(function (item, index) {
       console.log(item.ID, item.label);
       var btn = document.createElement("Button");
       btn.innerText = item.label;
       btn.onclick = function () {
         var id = item.ID;
-        console.log(id);
-
+        display.buttonPressed(id);
       }
       display.buttonDiv.appendChild(btn);
     });
 
+  // Get the first word out of form before first
+  // button is pressed.
+  this.currentWord = form.getWord();
+
+}
+
+
+display.buttonPressed = function (userWordID) {
+  if (userWordID === this.currentWord) {
+    console.log("Treffer!");
+    this.currentWord = form.getWord();
+    return;
+  }
+
+  console.log("falsch!!!!!");
 }
