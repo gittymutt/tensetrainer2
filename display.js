@@ -5,6 +5,7 @@ var display = {
   SPast: "sPasterror",
   theRest: "theResterror",
   SPres: "SPreserror",
+  ingForm: "ingFormerror",
   buttonDiv: document.getElementById('buttons'),
   outputDiv: document.getElementById('output'),
   descriptionDiv: document.getElementById('description'),
@@ -20,8 +21,9 @@ display.init = function(myForm) {
   this.BFV = myForm.BFV;
   this.SPast = myForm.SPast;
   this.theRest = myForm.theRest;
-  this.output = []; // clear output display
+  this.output = [];
   this.SPres = myForm.SPres;
+  this.ingForm = myForm.ingForm;
   console.log(myForm.BFV);
   console.log(this.subj, this.isIrreg, this.BFV, this.SPast, this.theRest);
 }
@@ -138,6 +140,18 @@ display.outputWord = function(id) {
       wordCount++; // advance over the 'not' so we don't print it
     } else if (currentWord == ENUM.does && nextWord == ENUM.not) {
       this.outputDiv.textContent += "doesn't";
+      wordCount++; // advance over the 'not' so we don't print it
+    } else if (currentWord == ENUM.did && nextWord == ENUM.not) {
+      this.outputDiv.textContent += "didn't";
+      wordCount++; // advance over the 'not' so we don't print it
+    } else if (currentWord == ENUM.BFV && nextWord == ENUM.ing) {
+      this.outputDiv.textContent += this.ingForm;
+      wordCount++; // advance over the 'not' so we don't print it
+    } else if (currentWord == ENUM.is && nextWord == ENUM.not) {
+      this.outputDiv.textContent += "isn't";
+      wordCount++; // advance over the 'not' so we don't print it
+    } else if (currentWord == ENUM.are && nextWord == ENUM.not) {
+      this.outputDiv.textContent += "aren't";
       wordCount++; // advance over the 'not' so we don't print it
     } else {
       this.outputDiv.textContent += this.buttonArray[this.output[wordCount]];
