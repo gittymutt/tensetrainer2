@@ -131,6 +131,9 @@ display.outputWord = function(id) {
     currentWord = this.output[wordCount];
     nextWord = this.output[parseInt(wordCount)+1];
     console.log("word, nextword, currentWord:" + wordCount,nextWord,currentWord);
+
+
+
     if (nextWord == ENUM.s && currentWord == ENUM.BFV) {
       console.log(this.SPres);
       this.outputDiv.textContent += this.SPres;
@@ -154,7 +157,15 @@ display.outputWord = function(id) {
       this.outputDiv.textContent += "aren't";
       wordCount++; // advance over the 'not' so we don't print it
     } else {
+      // capitalize first word
+      if (parseInt(wordCount) === 0) {
+        var str;
+        str = this.buttonArray[this.output[wordCount]];
+        this.outputDiv.textContent +=
+              str.charAt(0).toUpperCase() + str.slice(1);
+      } else {
       this.outputDiv.textContent += this.buttonArray[this.output[wordCount]];
+      }
     }
     this.outputDiv.textContent += " ";
   }
