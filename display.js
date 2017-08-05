@@ -59,7 +59,7 @@ display.setUpButtons = function() {
   for (var item in this.buttonArray) {
 
       var btn = document.createElement("Button");
-      btn.innerText = display.buttonArray[item];
+      btn.textContent = display.buttonArray[item];
 
       btn.onclick = (function(i){
         return function(){
@@ -105,7 +105,7 @@ display.buttonPressed = function (userWordID) {
 }
 
 display.setUpForm = function () {
-  this.descriptionDiv.innerText = form.formName;
+  this.descriptionDiv.textContent = form.formName;
   console.log("formname is:" + form.formName);
 }
 
@@ -113,13 +113,13 @@ display.outputWord = function(id) {
   console.log("id: " + id);
   this.output.push(id);
   console.log("output:" + this.output);
-  this.outputDiv.innerText = "";
+  this.outputDiv.textContent = "";
   for (word in this.output) {
     console.log("buttonArray[word]:" + this.buttonArray[this.output[word]]);
     this.outputDiv.textContent += this.buttonArray[this.output[word]];
     this.outputDiv.textContent += " ";
   }
-  //this.outputDiv.innerText = this.output;
+  //this.outputDiv. = this.output;
 
-  console.log("Treffer! Output: " + this.output.innerText);
+  console.log("Treffer! Output: " + this.output.textContent);
 }
