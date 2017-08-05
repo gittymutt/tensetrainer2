@@ -9,6 +9,7 @@ var display = {
   buttonDiv: document.getElementById('buttons'),
   outputDiv: document.getElementById('output'),
   descriptionDiv: document.getElementById('description'),
+  theRestDiv: document.getElementById('theRest'),
   currentWord: 0,
   output: [],
   buttonArray: {}
@@ -24,8 +25,10 @@ display.init = function(myForm) {
   this.output = [];
   this.SPres = myForm.SPres;
   this.ingForm = myForm.ingForm;
-  console.log(myForm.BFV);
-  console.log(this.subj, this.isIrreg, this.BFV, this.SPast, this.theRest);
+
+  this.theRestDiv.textContent = this.theRest;
+  //console.log(myForm.BFV);
+  //console.log(this.subj, this.isIrreg, this.BFV, this.SPast, this.theRest);
 }
 
 display.setUpButtons = function() {
@@ -85,13 +88,14 @@ display.setUpButtons = function() {
 
 
 display.buttonPressed = function (userWordID) {
-  console.log("In buttonPressed():" + userWordID, this.currentWord);
+  //console.log("In buttonPressed():" + userWordID, this.currentWord);
   if (userWordID == this.currentWord) {
 
     this.outputWord(userWordID);
     if (form.newForm) {
       this.setUpForm();
       this.output = [];
+
     }
 
     if (form.newSentence) {
@@ -110,6 +114,7 @@ display.buttonPressed = function (userWordID) {
 
 display.setUpForm = function () {
   this.descriptionDiv.textContent = form.formName;
+
   //console.log("formname is:" + form.formName);
 }
 
@@ -127,7 +132,7 @@ display.outputWord = function(id) {
     console.log("word, nextword, currentWord:" + wordCount,nextWord,currentWord);
 
 
-
+    // Put words together before displaying them
     if (nextWord == ENUM.s && currentWord == ENUM.BFV) {
       console.log(this.SPres);
       this.outputDiv.textContent += this.SPres;
