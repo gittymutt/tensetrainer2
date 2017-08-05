@@ -26,6 +26,7 @@ display.init = function(myForm) {
   this.SPres = myForm.SPres;
   this.ingForm = myForm.ingForm;
 
+  this.theRestDiv.textContent = "";
   this.theRestDiv.textContent = this.theRest;
   //console.log(myForm.BFV);
   //console.log(this.subj, this.isIrreg, this.BFV, this.SPast, this.theRest);
