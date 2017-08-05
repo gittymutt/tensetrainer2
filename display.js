@@ -5,6 +5,7 @@ var display = {
   SPast: "sPasterror",
   theRest: "theResterror",
   buttonDiv: document.getElementById('buttons'),
+  outputDiv: document.getElementById('output'),
   descriptionDiv: document.getElementById('description'),
   currentWord: 0,
   output: [],
@@ -83,8 +84,7 @@ display.buttonPressed = function (userWordID) {
   console.log("In buttonPressed():" + userWordID, this.currentWord);
   if (userWordID == this.currentWord) {
 
-    this.output.push(this.buttonArray[userWordID]);
-    console.log("Treffer! Output: " + this.output);
+    this.outputWord(userWordID);
     if (form.newForm) {
       this.setUpForm();
       this.output = [];
@@ -107,4 +107,19 @@ display.buttonPressed = function (userWordID) {
 display.setUpForm = function () {
   this.descriptionDiv.innerText = form.formName;
   console.log("formname is:" + form.formName);
+}
+
+display.outputWord = function(id) {
+  console.log("id: " + id);
+  this.output.push(id);
+  console.log("output:" + this.output);
+  this.outputDiv.innerText = "";
+  for (word in this.output) {
+    console.log("buttonArray[word]:" + this.buttonArray[this.output[word]]);
+    this.outputDiv.textContent += this.buttonArray[this.output[word]];
+    this.outputDiv.textContent += " ";
+  }
+  //this.outputDiv.innerText = this.output;
+
+  console.log("Treffer! Output: " + this.output.innerText);
 }
