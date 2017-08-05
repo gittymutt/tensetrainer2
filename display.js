@@ -4,6 +4,7 @@ var display = {
   BFV: "BFVerror",
   SPast: "sPasterror",
   theRest: "theResterror",
+  SPres: "SPreserror",
   buttonDiv: document.getElementById('buttons'),
   outputDiv: document.getElementById('output'),
   descriptionDiv: document.getElementById('description'),
@@ -20,6 +21,7 @@ display.init = function(myForm) {
   this.SPast = myForm.SPast;
   this.theRest = myForm.theRest;
   this.output = []; // clear output display
+  this.SPres = myForm.SPres;
   console.log(myForm.BFV);
   console.log(this.subj, this.isIrreg, this.BFV, this.SPast, this.theRest);
 }
@@ -106,20 +108,39 @@ display.buttonPressed = function (userWordID) {
 
 display.setUpForm = function () {
   this.descriptionDiv.textContent = form.formName;
-  console.log("formname is:" + form.formName);
+  //console.log("formname is:" + form.formName);
 }
 
 display.outputWord = function(id) {
-  console.log("id: " + id);
+  //console.log("id: " + id);
+  var currentWord, nextWord;
+
+
   this.output.push(id);
-  console.log("output:" + this.output);
+
+  //console.log(this.output[this.output.length-2],
+  //            this.output[this.output.length-1]);
+  //if (this.output[this.output.length-1] == ENUM.s &&
+  //    this.output[this.output.length-2] == ENUM.BFV) {
+  //      console.log("found spres hshieit" + this.SPres);
+  //    }
   this.outputDiv.textContent = "";
   for (word in this.output) {
-    console.log("buttonArray[word]:" + this.buttonArray[this.output[word]]);
+    //console.log("type of word:" + typeof(parseInt(word)));
+    currentWord = this.output[word];
+    nextWord = this.output[parseInt(word)+1];
+    //console.log("buttonArray[word]:" + this.buttonArray[this.output[word]]);
+    console.log("word, nextword, currentWord:" + word,nextWord,currentWord);
+    if (nextWord == ENUM.s && currentWord == ENUM.BFV) {
+      console.log(this.SPres);
+      this.outputDiv.textContent += this.SPres;
+
+    } else {
     this.outputDiv.textContent += this.buttonArray[this.output[word]];
+    }
     this.outputDiv.textContent += " ";
   }
   //this.outputDiv. = this.output;
 
-  console.log("Treffer! Output: " + this.output.textContent);
+  console.log("Treffer! Output: ");
 }
