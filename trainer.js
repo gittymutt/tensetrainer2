@@ -10,4 +10,12 @@ while (!form.done) {
 */
 display.init(form);
 display.setUpButtons();
-display.setUpSentence();
+display.setUpForm();
+
+
+
+// to do:
+// add simple present hesheit form
+// put in irreg on keyboard
+
+// make all things like Spast, SPast etc. the same

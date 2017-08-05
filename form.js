@@ -30,7 +30,21 @@ var form = {
   form.init = function () {
     // get this from another class later
     this.sentenceCollection =
-        [{Subj: "Poseurs",
+        [{
+          Subj: "he",
+           subjNum: ENUM.sing,
+           BFV: "break",
+           isIrreg: true,
+           isAction: true,
+           SPast: "broke",
+           ingForm: "breaking",
+           theRest: "the machine."
+        },
+
+
+
+
+          {Subj: "Poseurs",
           subjNum: ENUM.pl,
           BFV: "skate",
           isIrreg: false,
@@ -42,7 +56,7 @@ var form = {
          {Subj: "he",
           subjNum: ENUM.sing,
           BFV: "break",
-          isIrreg: false,
+          isIrreg: true,
           isAction: true,
           SPast: "broke",
           ingForm: "breaking",
@@ -56,7 +70,17 @@ var form = {
           SPast: "studied",
           ingForm: "studying",
           theRest: "English."
-        }];
+        },
+        {Subj: "he",
+         subjNum: ENUM.sing,
+         BFV: "break",
+         isIrreg: true,
+         isAction: true,
+         SPast: "broke",
+         ingForm: "breaking",
+         theRest: "the Internet.",
+        }
+      ];
 
         // Get first form ready for user. User only has to call
 
@@ -86,6 +110,7 @@ var form = {
     this.ingForm = this.sentence['ingForm'];
     this.theRest = this.sentence['theRest'];
     this.BFV = this.sentence['BFV'];
+    this.isIrreg = this.sentence['isIrreg'];
 
 
     switch(this.sentence.subjNum) {

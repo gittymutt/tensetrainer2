@@ -14,10 +14,10 @@ display.init = function(myForm) {
   this.isIrreg = myForm.isIrreg;
   this.subj = myForm.sentence['Subj'];
   this.BFV = myForm.BFV;
-  this.sPast = myForm.Spast;
+  this.Spast = myForm.SPast;
   this.theRest = myForm.theRest;
   console.log(myForm.BFV);
-  console.log(this.subj, this.isIrreg, this.BFV, this.sPast, this.theRest);
+  console.log(this.subj, this.isIrreg, this.BFV, this.Spast, this.theRest);
 }
 
 display.setUpButtons = function() {
@@ -45,8 +45,14 @@ display.setUpButtons = function() {
     {ID: ENUM.subj, label: this.subj}
   ];
 
+  if (this.isIrreg) {
+    buttonArray.push({ID: ENUM.irreg, label: this.Spast});
+  }
 
-
+  // clear buttons, if any
+  while (this.buttonDiv.firstChild) {
+    this.buttonDiv.removeChild(this.buttonDiv.firstChild);
+  }
 
   buttonArray.forEach(function (item, index) {
       console.log(item.ID, item.label);
@@ -61,14 +67,27 @@ display.setUpButtons = function() {
 
   // Get the first word out of form before first
   // button is pressed.
-  this.currentWord = form.getWord();
-
+  if (this.currentWord === 0) {
+    this.currentWord = form.getWord();
+  }
 }
 
 
 display.buttonPressed = function (userWordID) {
   if (userWordID === this.currentWord) {
     console.log("Treffer!");
+
+    if (form.newForm) {
+      this.setUpForm();
+    }
+
+    if (form.newSentence) {
+      console.log("newSentence ");
+
+      display.init(form);
+      display.setUpButtons();
+
+    }
     this.currentWord = form.getWord();
     return;
   }
@@ -76,7 +95,7 @@ display.buttonPressed = function (userWordID) {
   console.log("falsch!!!!!");
 }
 
-display.setUpSentence = function () {
+display.setUpForm = function () {
   this.descriptionDiv.innerText = form.formName;
   console.log("formname is:" + form.formName);
 }
