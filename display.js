@@ -133,8 +133,14 @@ display.outputWord = function(id) {
       console.log(this.SPres);
       this.outputDiv.textContent += this.SPres;
       wordCount++; // advance over the -s so we don't print it
+    } else if (currentWord == ENUM.do && nextWord == ENUM.not) {
+      this.outputDiv.textContent += "don't";
+      wordCount++; // advance over the 'not' so we don't print it
+    } else if (currentWord == ENUM.does && nextWord == ENUM.not) {
+      this.outputDiv.textContent += "doesn't";
+      wordCount++; // advance over the 'not' so we don't print it
     } else {
-    this.outputDiv.textContent += this.buttonArray[this.output[wordCount]];
+      this.outputDiv.textContent += this.buttonArray[this.output[wordCount]];
     }
     this.outputDiv.textContent += " ";
   }
