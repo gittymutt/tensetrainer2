@@ -16,7 +16,8 @@ var form = {
   formName: {},
   isIrreg: false,
   isAction: true,
-  Spast: "",
+  SPast: "",
+  SPres: "",
   ingForm: "",
   theRest: "",
   BFV: ""
@@ -37,6 +38,7 @@ var form = {
            isIrreg: true,
            isAction: true,
            SPast: "broke",
+           SPres: "breaks",
            ingForm: "breaking",
            theRest: "the machine."
         },
@@ -50,6 +52,7 @@ var form = {
           isIrreg: false,
           isAction: true,
           SPast: "skated",
+          SPres: "skates",
           ingForm: "skating",
           theRest: "badly."
         },
@@ -59,6 +62,7 @@ var form = {
           isIrreg: true,
           isAction: true,
           SPast: "broke",
+          SPres: "breaks",
           ingForm: "breaking",
           theRest: "the machine.",
         },
@@ -68,6 +72,7 @@ var form = {
           isIrreg: false,
           isAction: true,
           SPast: "studied",
+          SPres: "studies",
           ingForm: "studying",
           theRest: "English."
         },
@@ -77,6 +82,7 @@ var form = {
          isIrreg: true,
          isAction: true,
          SPast: "broke",
+         SPres: "breaks",
          ingForm: "breaking",
          theRest: "the Internet.",
         }
@@ -111,6 +117,7 @@ var form = {
     this.theRest = this.sentence['theRest'];
     this.BFV = this.sentence['BFV'];
     this.isIrreg = this.sentence['isIrreg'];
+    this.SPres = this.sentence['SPres'];
 
 
     switch(this.sentence.subjNum) {
