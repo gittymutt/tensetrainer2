@@ -114,18 +114,12 @@ display.setUpForm = function () {
 }
 
 display.outputWord = function(id) {
-  //console.log("id: " + id);
+
   var currentWord, nextWord, wordCount;
 
 
   this.output.push(id);
 
-  //console.log(this.output[this.output.length-2],
-  //            this.output[this.output.length-1]);
-  //if (this.output[this.output.length-1] == ENUM.s &&
-  //    this.output[this.output.length-2] == ENUM.BFV) {
-  //      console.log("found spres hshieit" + this.SPres);
-  //    }
   this.outputDiv.textContent = "";
   for (wordCount = 0;wordCount < this.output.length;wordCount++) {
     currentWord = this.output[wordCount];
