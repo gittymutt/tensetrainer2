@@ -2,11 +2,13 @@ var display = {
   isIrreg: false,
   subj: "subjError",
   BFV: "BFVerror",
-  Spast: "sPasterror",
+  SPast: "sPasterror",
   theRest: "theResterror",
   buttonDiv: document.getElementById('buttons'),
   descriptionDiv: document.getElementById('description'),
-  currentWord: 0
+  currentWord: 0,
+  output: [],
+  buttonArray: {}
 
 }
 
@@ -14,10 +16,11 @@ display.init = function(myForm) {
   this.isIrreg = myForm.isIrreg;
   this.subj = myForm.sentence['Subj'];
   this.BFV = myForm.BFV;
-  this.Spast = myForm.SPast;
+  this.SPast = myForm.SPast;
   this.theRest = myForm.theRest;
+  this.output = []; // clear output display
   console.log(myForm.BFV);
-  console.log(this.subj, this.isIrreg, this.BFV, this.Spast, this.theRest);
+  console.log(this.subj, this.isIrreg, this.BFV, this.SPast, this.theRest);
 }
 
 display.setUpButtons = function() {
@@ -26,27 +29,27 @@ display.setUpButtons = function() {
   // have, has, BFV, not, ing, ed
 
   //labels and IDs for buttons
-  var buttonArray = [
-    {ID: ENUM.is, label: "is"},
-    {ID: ENUM.am, label: "am"},
-    {ID: ENUM.are, label: "are"},
-    {ID: ENUM.do, label: "do"},
-    {ID: ENUM.did, label: "did"},
-    {ID: ENUM.does, label:"does"},
-    {ID: ENUM.was, label: "was"},
-    {ID: ENUM.were, label: "were"},
-    {ID: ENUM.s, label: "-s"},
-    {ID: ENUM.have, label: "have"},
-    {ID: ENUM.has, label: "has"},
-    {ID: ENUM.BFV, label: this.BFV},
-    {ID: ENUM.not, label: "not"},
-    {ID: ENUM.ing, label: "-ing"},
-    {ID: ENUM.ed, label: "-ed"},
-    {ID: ENUM.subj, label: this.subj}
-  ];
+  this.buttonArray = {};
+
+    this.buttonArray[ENUM.is] = "is";
+    this.buttonArray[ENUM.am] = "am";
+    this.buttonArray[ENUM.are] = "are";
+    this.buttonArray[ENUM.do] = "do";
+    this.buttonArray[ENUM.did] = "did";
+    this.buttonArray[ENUM.does] = "does";
+    this.buttonArray[ENUM.was]  = "was";
+    this.buttonArray[ENUM.were]  = "were";
+    this.buttonArray[ENUM.s]  = "-s";
+    this.buttonArray[ENUM.have]  = "have";
+    this.buttonArray[ENUM.has]  = "has";
+    this.buttonArray[ENUM.BFV]  = this.BFV;
+    this.buttonArray[ENUM.not]  = "not";
+    this.buttonArray[ENUM.ing]  = "-ing";
+    this.buttonArray[ENUM.ed]  = "-ed";
+    this.buttonArray[ENUM.subj] = this.subj;
 
   if (this.isIrreg) {
-    buttonArray.push({ID: ENUM.irreg, label: this.Spast});
+    this.buttonArray[ENUM.irreg] = this.SPast;
   }
 
   // clear buttons, if any
@@ -54,16 +57,28 @@ display.setUpButtons = function() {
     this.buttonDiv.removeChild(this.buttonDiv.firstChild);
   }
 
-  buttonArray.forEach(function (item, index) {
-      console.log(item.ID, item.label);
+  for (var item in this.buttonArray) {
+      //let id = item;
+      //console.log(id, buttonArray[id]);
       var btn = document.createElement("Button");
-      btn.innerText = item.label;
+      btn.innerText = display.buttonArray[item];
+
+      /*
       btn.onclick = function () {
-        var id = item.ID;
+
         display.buttonPressed(id);
-      }
+      };
+      */
+      btn.onclick = (function(i){
+        return function(){
+          display.buttonPressed(i);
+        }
+      })(item);
+
+
+
       display.buttonDiv.appendChild(btn);
-    });
+    };
 
   // Get the first word out of form before first
   // button is pressed.
@@ -74,11 +89,14 @@ display.setUpButtons = function() {
 
 
 display.buttonPressed = function (userWordID) {
-  if (userWordID === this.currentWord) {
-    console.log("Treffer!");
+  console.log("In buttonPressed():" + userWordID, this.currentWord);
+  if (userWordID == this.currentWord) {
 
+    this.output.push(this.buttonArray[userWordID]);
+    console.log("Treffer! Output: " + this.output);
     if (form.newForm) {
       this.setUpForm();
+      this.output = [];
     }
 
     if (form.newSentence) {
