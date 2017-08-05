@@ -24,9 +24,7 @@ display.init = function(myForm) {
 }
 
 display.setUpButtons = function() {
-  // buttons needed:
-  // subj, (irreg past form), is, am are, was, were, do, does
-  // have, has, BFV, not, ing, ed
+
 
   //labels and IDs for buttons
   this.buttonArray = {};
@@ -58,17 +56,10 @@ display.setUpButtons = function() {
   }
 
   for (var item in this.buttonArray) {
-      //let id = item;
-      //console.log(id, buttonArray[id]);
+
       var btn = document.createElement("Button");
       btn.innerText = display.buttonArray[item];
 
-      /*
-      btn.onclick = function () {
-
-        display.buttonPressed(id);
-      };
-      */
       btn.onclick = (function(i){
         return function(){
           display.buttonPressed(i);
