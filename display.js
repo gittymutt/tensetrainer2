@@ -113,7 +113,7 @@ display.setUpForm = function () {
 
 display.outputWord = function(id) {
   //console.log("id: " + id);
-  var currentWord, nextWord;
+  var currentWord, nextWord, wordCount;
 
 
   this.output.push(id);
@@ -125,22 +125,20 @@ display.outputWord = function(id) {
   //      console.log("found spres hshieit" + this.SPres);
   //    }
   this.outputDiv.textContent = "";
-  for (word in this.output) {
-    //console.log("type of word:" + typeof(parseInt(word)));
-    currentWord = this.output[word];
-    nextWord = this.output[parseInt(word)+1];
-    //console.log("buttonArray[word]:" + this.buttonArray[this.output[word]]);
-    console.log("word, nextword, currentWord:" + word,nextWord,currentWord);
+  for (wordCount = 0;wordCount < this.output.length;wordCount++) {
+    currentWord = this.output[wordCount];
+    nextWord = this.output[parseInt(wordCount)+1];
+    console.log("word, nextword, currentWord:" + wordCount,nextWord,currentWord);
     if (nextWord == ENUM.s && currentWord == ENUM.BFV) {
       console.log(this.SPres);
       this.outputDiv.textContent += this.SPres;
-
+      wordCount++; // advance over the -s so we don't print it
     } else {
-    this.outputDiv.textContent += this.buttonArray[this.output[word]];
+    this.outputDiv.textContent += this.buttonArray[this.output[wordCount]];
     }
     this.outputDiv.textContent += " ";
   }
-  //this.outputDiv. = this.output;
+
 
   console.log("Treffer! Output: ");
 }
