@@ -14,6 +14,7 @@ var form = {
   newForm: false,
   done: false,
   formName: {},
+  isNegative: false,
   isIrreg: false,
   isAction: true,
   SPast: "",
@@ -144,12 +145,15 @@ var form = {
         simplePresAffirm = [ENUM.subj, ENUM.BFV ];
     }
     simplePresAffirm.name = "Simple present, affirmative";
+    simplePresAffirm.negative = false;
 
     simplePresNeg = [ENUM.subj, doForm, ENUM.not, ENUM.BFV];
     simplePresNeg.name = "Simple present, negative";
+    simplePresNeg.negative = true;
 
     simplePresQ = [doForm, ENUM.subj, ENUM.BFV];
     simplePresQ.name = "Simple present, yes/no question";
+    simplePresQ.negative = false;
 
     if (this.sentence.isIrreg) {
       simplePastAffirm = [ENUM.subj, ENUM.irreg];
@@ -161,19 +165,26 @@ var form = {
     simplePastNeg.name = "Simple past, negative";
     simplePastQ = [ENUM.did, ENUM.subj, ENUM.BFV]
     simplePastQ.name = "Simple past, question";
+    simplePastQ.negative = false;
 
     presProgAffirm = [ENUM.subj, bePresForm, ENUM.BFV, ENUM.ing];
     presProgAffirm.name = "Present progressive, affirmative";
+    presProgAffirm.negative = false;
+
     presProgNeg = [ENUM.subj, bePresForm, ENUM.not, ENUM.BFV, ENUM.ing];
     presProgNeg.name = "Present progressive, negative";
+    presProgNeg.negative = true;
+
     presProgQ = [bePresForm, ENUM.subj, ENUM.BFV, ENUM.ing];
     presProgQ.name = "Present progressive, question";
+    presProgQ.negative = false;
 
     this.formArray = [simplePresAffirm, simplePresNeg, simplePresQ,
                       simplePastAffirm, simplePastNeg, simplePastQ,
                        presProgAffirm, presProgNeg, presProgQ];
 
     this.formName = this.formArray[this.fCount]['name'];
+    console.log("form is negative:" + this.formArray[this.fCount]['negative']);
     return true;
   }
 
@@ -210,6 +221,7 @@ form.getWord = function () {
     }
     this.formName = this.formArray[this.fCount]['name']; // to display tense and type of sentence
 
+    console.log("form is negative:" + this.formArray[this.fCount]['negative']);
   }
   return wordValue;
 }

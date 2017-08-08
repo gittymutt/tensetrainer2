@@ -7,4 +7,8 @@ display.setUpForm();
 
 
 // to do:
-// change buttonArray to dictionary
+// Put in word choices
+// put not in word choices when it's negative
+// put question mark at end when question
+
+// Make right/wrong signs

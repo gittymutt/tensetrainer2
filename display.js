@@ -1,5 +1,6 @@
 var display = {
   isIrreg: false,
+  isNegative: false,
   subj: "subjError",
   BFV: "BFVerror",
   SPast: "sPasterror",
@@ -8,6 +9,7 @@ var display = {
   ingForm: "ingFormerror",
   buttonDiv: document.getElementById('buttons'),
   outputDiv: document.getElementById('output'),
+  wordsDiv: document.getElementById('words'),
   descriptionDiv: document.getElementById('description'),
   theRestDiv: document.getElementById('theRest'),
   currentWord: 0,
@@ -25,8 +27,9 @@ display.init = function(myForm) {
   this.output = [];
   this.SPres = myForm.SPres;
   this.ingForm = myForm.ingForm;
+  this.isNegative = myForm.isNegative;
 
-  this.theRestDiv.textContent = "";
+
   this.theRestDiv.textContent = this.theRest;
   //console.log(myForm.BFV);
   //console.log(this.subj, this.isIrreg, this.BFV, this.SPast, this.theRest);
@@ -115,6 +118,14 @@ display.buttonPressed = function (userWordID) {
 
 display.setUpForm = function () {
   this.descriptionDiv.textContent = form.formName;
+  this.wordsDiv.textContent = this.subj + "/" +
+    this.BFV;
+  if (this.isNegative) {
+    console.log("is Negative!!");
+    this.wordsDiv.textContent += "/not";
+  }
+
+
 
   //console.log("formname is:" + form.formName);
 }
@@ -130,7 +141,7 @@ display.outputWord = function(id) {
   for (wordCount = 0;wordCount < this.output.length;wordCount++) {
     currentWord = this.output[wordCount];
     nextWord = this.output[parseInt(wordCount)+1];
-    console.log("word, nextword, currentWord:" + wordCount,nextWord,currentWord);
+    //console.log("word, nextword, currentWord:" + wordCount,nextWord,currentWord);
 
 
     // Put words together before displaying them
