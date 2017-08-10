@@ -21,6 +21,7 @@ var display = {
 
 display.init = function(myForm) {
   this.f = myForm;
+  /*
   this.isIrreg = myForm.isIrreg;
   this.subj = myForm.sentence['Subj'];
   this.BFV = myForm.BFV;
@@ -31,16 +32,15 @@ display.init = function(myForm) {
   this.ingForm = myForm.ingForm;
   this.isNegative = myForm.isNegative;
   console.log(myForm);
+*/
 
 
-
-  this.theRestDiv.textContent = this.theRest;
+  this.theRestDiv.textContent = this.f.theRest;
   //console.log(myForm.BFV);
   //console.log(this.subj, this.isIrreg, this.BFV, this.SPast, this.theRest);
 }
 
 display.setUpButtons = function() {
-
 
   //labels and IDs for buttons
   this.buttonArray = {};
@@ -56,14 +56,14 @@ display.setUpButtons = function() {
     this.buttonArray[ENUM.s]  = "-s";
     this.buttonArray[ENUM.have]  = "have";
     this.buttonArray[ENUM.has]  = "has";
-    this.buttonArray[ENUM.BFV]  = this.BFV;
+    this.buttonArray[ENUM.BFV]  = this.f.BFV;
     this.buttonArray[ENUM.not]  = "not";
     this.buttonArray[ENUM.ing]  = "-ing";
     this.buttonArray[ENUM.ed]  = "-ed";
     this.buttonArray[ENUM.subj] = this.f.sentence['Subj'];
 
   if (this.f.isIrreg) {
-    this.buttonArray[ENUM.irreg] = this.SPast;
+    this.buttonArray[ENUM.irreg] = this.f.SPast;
   }
 
   // clear buttons, if any
@@ -124,10 +124,10 @@ display.setUpForm = function () {
   this.descriptionDiv.textContent = form.formName;
 
   this.wordsDiv.textContent = this.f.sentence['Subj']+ "/" +
-    this.BFV;
-  console.log("isNegative:" + this.isNegative);
-  this.isNegative = form.isNegative;
-  if (this.isNegative) {
+    this.f.BFV;
+  //console.log("isNegative:" + this.isNegative);
+  //jjjthis.isNegative = form.isNegative;
+  if (this.f.isNegative) {
     console.log("is Negative!!");
     this.wordsDiv.textContent += "/not";
   }
@@ -153,8 +153,8 @@ display.outputWord = function(id) {
 
     // Put words together before displaying them
     if (nextWord == ENUM.s && currentWord == ENUM.BFV) {
-      console.log(this.SPres);
-      this.outputDiv.textContent += this.SPres;
+      console.log(this.f.SPres);
+      this.outputDiv.textContent += this.f.SPres;
       wordCount++; // advance over the -s so we don't print it
     } else if (currentWord == ENUM.do && nextWord == ENUM.not) {
       this.outputDiv.textContent += "don't";
@@ -166,7 +166,7 @@ display.outputWord = function(id) {
       this.outputDiv.textContent += "didn't";
       wordCount++; // advance over the 'not' so we don't print it
     } else if (currentWord == ENUM.BFV && nextWord == ENUM.ing) {
-      this.outputDiv.textContent += this.ingForm;
+      this.outputDiv.textContent += this.f.ingForm;
       wordCount++; // advance over the 'not' so we don't print it
     } else if (currentWord == ENUM.is && nextWord == ENUM.not) {
       this.outputDiv.textContent += "isn't";
