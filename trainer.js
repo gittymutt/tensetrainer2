@@ -12,3 +12,6 @@ display.setUpForm();
 // put question mark at end when question
 
 // Make right/wrong signs
+
+// remove extra data members from display
+// and just pass in form object.

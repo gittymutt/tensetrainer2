@@ -118,8 +118,11 @@ display.buttonPressed = function (userWordID) {
 
 display.setUpForm = function () {
   this.descriptionDiv.textContent = form.formName;
+
   this.wordsDiv.textContent = this.subj + "/" +
     this.BFV;
+  console.log("isNegative:" + this.isNegative);
+  this.isNegative = form.isNegative;
   if (this.isNegative) {
     console.log("is Negative!!");
     this.wordsDiv.textContent += "/not";

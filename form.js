@@ -161,8 +161,12 @@ var form = {
       simplePastAffirm = [ENUM.subj, ENUM.BFV, ENUM.ed];
     }
     simplePastAffirm.name = "Simple past, affirmative";
+    simplePastAffirm.negative = false;
+
     simplePastNeg = [ENUM.subj, ENUM.did, ENUM.not, ENUM.BFV];
     simplePastNeg.name = "Simple past, negative";
+    simplePastNeg.negative = true;
+
     simplePastQ = [ENUM.did, ENUM.subj, ENUM.BFV]
     simplePastQ.name = "Simple past, question";
     simplePastQ.negative = false;
@@ -184,7 +188,8 @@ var form = {
                        presProgAffirm, presProgNeg, presProgQ];
 
     this.formName = this.formArray[this.fCount]['name'];
-    console.log("form is negative:" + this.formArray[this.fCount]['negative']);
+    ///console.log("form is negative:" + this.formArray[this.fCount]['negative']);
+    this.isNegative = this.formArray[this.fCount]['negative'];
     return true;
   }
 
@@ -220,8 +225,10 @@ form.getWord = function () {
 
     }
     this.formName = this.formArray[this.fCount]['name']; // to display tense and type of sentence
-
-    console.log("form is negative:" + this.formArray[this.fCount]['negative']);
+    this.isNegative = this.formArray[this.fCount]['negative'];
+    //console.log("form is negative:" + this.formArray[this.fCount]['negative']);
+    //console.log(this.formName);
+    //console.log(this.getPosition());
   }
   return wordValue;
 }
