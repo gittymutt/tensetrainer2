@@ -21,23 +21,7 @@ var display = {
 
 display.init = function(myForm) {
   this.f = myForm;
-  /*
-  this.isIrreg = myForm.isIrreg;
-  this.subj = myForm.sentence['Subj'];
-  this.BFV = myForm.BFV;
-  this.SPast = myForm.SPast;
-  this.theRest = myForm.theRest;
-  this.output = [];
-  this.SPres = myForm.SPres;
-  this.ingForm = myForm.ingForm;
-  this.isNegative = myForm.isNegative;
-  console.log(myForm);
-*/
-
-
   this.theRestDiv.textContent = this.f.theRest;
-  //console.log(myForm.BFV);
-  //console.log(this.subj, this.isIrreg, this.BFV, this.SPast, this.theRest);
 }
 
 display.setUpButtons = function() {
@@ -96,7 +80,6 @@ display.setUpButtons = function() {
 
 
 display.buttonPressed = function (userWordID) {
-  //console.log("In buttonPressed():" + userWordID, this.currentWord);
   if (userWordID == this.currentWord) {
 
     this.outputWord(userWordID);
@@ -125,16 +108,10 @@ display.setUpForm = function () {
 
   this.wordsDiv.textContent = this.f.sentence['Subj']+ "/" +
     this.f.BFV;
-  //console.log("isNegative:" + this.isNegative);
-  //jjjthis.isNegative = form.isNegative;
   if (this.f.isNegative) {
     console.log("is Negative!!");
     this.wordsDiv.textContent += "/not";
   }
-
-
-
-  //console.log("formname is:" + form.formName);
 }
 
 display.outputWord = function(id) {
