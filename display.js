@@ -1,13 +1,5 @@
 var display = {
   f: {},
-  isIrreg: false,
-  isNegative: false,
-  subj: "subjError",
-  BFV: "BFVerror",
-  SPast: "sPasterror",
-  theRest: "theResterror",
-  SPres: "SPreserror",
-  ingForm: "ingFormerror",
   buttonDiv: document.getElementById('buttons'),
   outputDiv: document.getElementById('output'),
   wordsDiv: document.getElementById('words'),
