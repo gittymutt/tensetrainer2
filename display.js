@@ -1,4 +1,5 @@
 var display = {
+  f: {},
   isIrreg: false,
   isNegative: false,
   subj: "subjError",
@@ -19,6 +20,7 @@ var display = {
 }
 
 display.init = function(myForm) {
+  this.f = myForm;
   this.isIrreg = myForm.isIrreg;
   this.subj = myForm.sentence['Subj'];
   this.BFV = myForm.BFV;
@@ -28,6 +30,8 @@ display.init = function(myForm) {
   this.SPres = myForm.SPres;
   this.ingForm = myForm.ingForm;
   this.isNegative = myForm.isNegative;
+  console.log(myForm);
+
 
 
   this.theRestDiv.textContent = this.theRest;
@@ -56,9 +60,9 @@ display.setUpButtons = function() {
     this.buttonArray[ENUM.not]  = "not";
     this.buttonArray[ENUM.ing]  = "-ing";
     this.buttonArray[ENUM.ed]  = "-ed";
-    this.buttonArray[ENUM.subj] = this.subj;
+    this.buttonArray[ENUM.subj] = this.f.sentence['Subj'];
 
-  if (this.isIrreg) {
+  if (this.f.isIrreg) {
     this.buttonArray[ENUM.irreg] = this.SPast;
   }
 
@@ -119,7 +123,7 @@ display.buttonPressed = function (userWordID) {
 display.setUpForm = function () {
   this.descriptionDiv.textContent = form.formName;
 
-  this.wordsDiv.textContent = this.subj + "/" +
+  this.wordsDiv.textContent = this.f.sentence['Subj']+ "/" +
     this.BFV;
   console.log("isNegative:" + this.isNegative);
   this.isNegative = form.isNegative;
