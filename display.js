@@ -174,7 +174,9 @@ display.outputWord = function(id) {
     this.outputDiv.textContent += " ";
   }
 
-  if (this.f.newForm) {console.log("good job!! new form"); }
+  if (this.f.newForm) {
+    this.outputDiv.textContent = "";
+  }
   console.log("Treffer! Output: ");
 }
 
@@ -182,10 +184,13 @@ display.showCorrect = function() {
   var el = document.getElementById('correct');
   el.style.visibility = 'visible';
   el.style.color = 'green';
-  el.textContent = 'Correct!!';
+  el.textContent = this.outputHolder;
   console.log("very good: " + this.outputHolder);
 
-  setTimeout( function () {document.getElementById('correct').style.visibility = 'hidden';}, 2000);
+  setTimeout( function () {
+    document.getElementById('correct').style.visibility = 'hidden';
+    //document.getElementById('output'). textContent = "";
+  }, 2000);
 
 
 }
@@ -195,7 +200,7 @@ display.showWrong = function() {
   el.style.visibility = 'visible';
   el.style.color = 'red';
   el.textContent = "Wrong!!";
-  console.log("very good: " + this.outputHolder);
+  //console.log("very good: " + this.outputHolder);
 
   setTimeout( function () {document.getElementById('correct').style.visibility = 'hidden';}, 2000);
 
