@@ -7,7 +7,8 @@ var display = {
   theRestDiv: document.getElementById('theRest'),
   currentWord: 0,
   output: [],
-  buttonArray: {}
+  buttonArray: {},
+  outputHolder: ""
 
 }
 
@@ -72,10 +73,13 @@ display.setUpButtons = function() {
 
 
 display.buttonPressed = function (userWordID) {
+  var correct = false;
   if (userWordID == this.currentWord) {
 
     this.outputWord(userWordID);
     if (form.newForm) {
+      correct = true;
+
       this.setUpForm();
       this.output = [];
 
@@ -89,13 +93,15 @@ display.buttonPressed = function (userWordID) {
 
     }
     this.currentWord = form.getWord();
+    if (correct) {this.showCorrect();}
     return;
   }
-
+  this.showWrong();
   console.log("falsch!!!!!");
 }
 
 display.setUpForm = function () {
+
   this.descriptionDiv.textContent = form.formName;
 
   this.wordsDiv.textContent = this.f.sentence['Subj']+ "/" +
@@ -154,9 +160,34 @@ display.outputWord = function(id) {
       this.outputDiv.textContent += this.buttonArray[this.output[wordCount]];
       }
     }
+    this.outputHolder = this.outputDiv.textContent;
     this.outputDiv.textContent += " ";
   }
 
-
+  if (this.f.newForm) {console.log("good job!! new form"); }
   console.log("Treffer! Output: ");
+}
+
+display.showCorrect = function() {
+  var el = document.getElementById('correct');
+  el.style.visibility = 'visible';
+  el.style.color = 'green';
+  el.textContent = 'Correct!!';
+  console.log("very good: " + this.outputHolder);
+
+  setTimeout( function () {document.getElementById('correct').style.visibility = 'hidden';}, 2000);
+
+
+}
+
+display.showWrong = function() {
+  var el = document.getElementById('correct');
+  el.style.visibility = 'visible';
+  el.style.color = 'red';
+  el.textContent = "Wrong!!";
+  console.log("very good: " + this.outputHolder);
+
+  setTimeout( function () {document.getElementById('correct').style.visibility = 'hidden';}, 2000);
+
+
 }

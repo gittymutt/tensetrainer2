@@ -12,6 +12,9 @@
   <div id="output"></div>
   <div id="theRest">this is the rest</div>
   <div id="buttons"></div>
+  <div id="correct">Correct!!</div>
+  <div id="wrong">Wrong!!</div>
+
 
 </body>
 
@@ -49,6 +52,19 @@ empty-cells: show;
   position: absolute;
   top: 50%;
   bottom: 0%;
+}
+
+#correct {
+  font-size: 6em;
+  color: green;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+#wrong {
+  font-size: 6em;
+  color: red;
+  visibility: hidden;
 }
 </style>
 </html>

@@ -8,10 +8,7 @@ display.setUpForm();
 
 // to do:
 // Put in word choices
-// put not in word choices when it's negative
 // put question mark at end when question
 
 // Make right/wrong signs
-
-// remove extra data members from display
-// and just pass in form object.
+// figure out where to put right sign when sentence is completed
