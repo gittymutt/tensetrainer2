@@ -110,6 +110,11 @@ display.setUpForm = function () {
     console.log("is Negative!!");
     this.wordsDiv.textContent += "/not";
   }
+  console.log("isQuestion: " + this.f.isQuestion);
+  if (this.f.isQuestion) {
+    this.wordsDiv.textContent += "/?"
+    console.log("is question??????");
+  }
 }
 
 display.outputWord = function(id) {

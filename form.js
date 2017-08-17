@@ -15,6 +15,7 @@ var form = {
   done: false,
   formName: {},
   isNegative: false,
+  isQuestion: false,
   isIrreg: false,
   isAction: true,
   SPast: "",
@@ -154,6 +155,7 @@ var form = {
     simplePresQ = [doForm, ENUM.subj, ENUM.BFV];
     simplePresQ.name = "Simple present, yes/no question";
     simplePresQ.negative = false;
+    simplePresQ.question = true;
 
     if (this.sentence.isIrreg) {
       simplePastAffirm = [ENUM.subj, ENUM.irreg];
@@ -170,6 +172,7 @@ var form = {
     simplePastQ = [ENUM.did, ENUM.subj, ENUM.BFV]
     simplePastQ.name = "Simple past, question";
     simplePastQ.negative = false;
+    simplePastQ.question = true;
 
     presProgAffirm = [ENUM.subj, bePresForm, ENUM.BFV, ENUM.ing];
     presProgAffirm.name = "Present progressive, affirmative";
@@ -182,6 +185,7 @@ var form = {
     presProgQ = [bePresForm, ENUM.subj, ENUM.BFV, ENUM.ing];
     presProgQ.name = "Present progressive, question";
     presProgQ.negative = false;
+    presProgQ.question = true;
 
     this.formArray = [simplePresAffirm, simplePresNeg, simplePresQ,
                       simplePastAffirm, simplePastNeg, simplePastQ,
@@ -190,6 +194,7 @@ var form = {
     this.formName = this.formArray[this.fCount]['name'];
     ///console.log("form is negative:" + this.formArray[this.fCount]['negative']);
     this.isNegative = this.formArray[this.fCount]['negative'];
+    this.isQuestion = this.formArray[this.fCount]['question'];
     return true;
   }
 
@@ -226,6 +231,8 @@ form.getWord = function () {
     }
     this.formName = this.formArray[this.fCount]['name']; // to display tense and type of sentence
     this.isNegative = this.formArray[this.fCount]['negative'];
+    this.isQuestion = this.formArray[this.fCount]['question'];
+    console.log("from form isQuestion" + this.formArray[this.fCount]['question']);
     //console.log("form is negative:" + this.formArray[this.fCount]['negative']);
     //console.log(this.formName);
     //console.log(this.getPosition());
