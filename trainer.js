@@ -12,3 +12,6 @@ display.setUpForm();
 
 // Make right/wrong signs
 // figure out where to put right sign when sentence is completed
+
+// fix correct sign. It shows next form before current
+// correct answer
