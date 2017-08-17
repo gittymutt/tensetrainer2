@@ -112,8 +112,13 @@ display.setUpForm = function () {
   }
   console.log("isQuestion: " + this.f.isQuestion);
   if (this.f.isQuestion) {
+    this.theRestDiv.textContent =
+        this.theRestDiv.textContent.slice(0,-1) + "?";
     this.wordsDiv.textContent += "/?"
     console.log("is question??????");
+  } else {
+    this.theRestDiv.textContent =
+        this.theRestDiv.textContent.slice(0,-1) + ".";
   }
 }
 
