@@ -68,16 +68,7 @@ var form = {
           ingForm: "breaking",
           theRest: "the machine.",
         },
-         {Subj: "we",
-          subjNum: ENUM.pl,
-          BFV: "study",
-          isIrreg: false,
-          isAction: true,
-          SPast: "studied",
-          SPres: "studies",
-          ingForm: "studying",
-          theRest: "English."
-        },
+
         {Subj: "he",
          subjNum: ENUM.sing,
          BFV: "break",
@@ -87,7 +78,17 @@ var form = {
          SPres: "breaks",
          ingForm: "breaking",
          theRest: "the Internet.",
-        }
+       },
+       {Subj: "we",
+         subjNum: ENUM.pl,
+         BFV: "study",
+         isIrreg: false,
+         isAction: true,
+         SPast: "studied",
+         SPres: "studies",
+         ingForm: "studying",
+         theRest: "English."
+       }
       ];
 
         // Get first form ready for user. User only has to call

@@ -159,6 +159,9 @@ display.outputWord = function(id) {
     } else if (currentWord == ENUM.are && nextWord == ENUM.not) {
       this.outputDiv.textContent += "aren't";
       wordCount++; // advance over the 'not' so we don't print it
+    } else if (currentWord == ENUM.BFV && nextWord == ENUM.ed) {
+      this.outputDiv.textContent += this.f.SPast;
+      wordCount++; // advance over the 'not' so we don't print it
     } else {
       // capitalize first word
       if (parseInt(wordCount) === 0) {
