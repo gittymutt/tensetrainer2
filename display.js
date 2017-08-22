@@ -77,7 +77,6 @@ display.setUpButtons = function() {
 
 
 display.buttonPressed = function (userWordID) {
-  console.log("this.outputHolder: " + this.outputHolder);
   var correct = false;
   if (userWordID == this.currentWord) {
 
@@ -93,7 +92,6 @@ display.buttonPressed = function (userWordID) {
     }
 
     if (form.newSentence) {
-      console.log("newSentence ");
 
       display.init(form);
       display.setUpButtons();
@@ -113,7 +111,6 @@ display.buttonPressed = function (userWordID) {
     return;
   }
   this.showWrong();
-  console.log("falsch!!!!!");
 }
 
 display.setUpForm = function () {
@@ -123,15 +120,12 @@ display.setUpForm = function () {
   this.wordsDiv.textContent = this.f.sentence['Subj']+ "/" +
     this.f.BFV;
   if (this.f.isNegative) {
-    //console.log("is Negative!!");
     this.wordsDiv.textContent += "/not";
   }
-  //console.log("isQuestion: " + this.f.isQuestion);
   if (this.f.isQuestion) {
     this.theRestDiv.textContent =
         this.theRestDiv.textContent.slice(0,-1) + "?";
     this.wordsDiv.textContent += "/?"
-    //console.log("is question??????");
   } else {
     this.theRestDiv.textContent =
         this.theRestDiv.textContent.slice(0,-1) + ".";
@@ -151,12 +145,10 @@ display.outputWord = function(id) {
   for (wordCount = 0;wordCount < this.output.length;wordCount++) {
     currentWord = this.output[wordCount];
     nextWord = this.output[parseInt(wordCount)+1];
-    //console.log("word, nextword, currentWord:" + wordCount,nextWord,currentWord);
 
 
     // Put words together before displaying them
     if (nextWord == ENUM.s && currentWord == ENUM.BFV) {
-      //console.log(this.f.SPres);
       this.outputDiv.textContent += SPres;
       wordCount++; // advance over the -s so we don't print it
     } else if (currentWord == ENUM.do && nextWord == ENUM.not) {
@@ -188,16 +180,10 @@ display.outputWord = function(id) {
         this.outputDiv.textContent +=
               str.charAt(0).toUpperCase() + str.slice(1);
       } else {
-        //console.log("outputHolder(before assign from button):" + this.outputHolder);
         this.outputDiv.textContent += this.buttonArray[this.output[wordCount]];
       }
     }
-    //alert("outputHolder befor assignfrom div" + this.outputHolder+ this.f.ingForm);
-    //console.log("outputHolder(before assign from div):" + this.outputHolder);
-    console.log(ingForm);
     this.outputHolder = this.outputDiv.textContent;
-    //alert("outputHolder (after assignfrom div)"+ this.outputHolder+this.f.ingForm);
-    //console.log("outputHolder(after assign from div):" + this.outputHolder);
 
     this.outputDiv.textContent += " ";
   }
@@ -205,7 +191,6 @@ display.outputWord = function(id) {
   if (this.f.newForm) {
     this.outputDiv.textContent = "";
   }
-  //console.log("Treffer! Output: ");
 }
 
 // show message when user gets to the end of the sentence
@@ -214,7 +199,6 @@ display.showCorrect = function() {
   el.style.visibility = 'visible';
   el.style.color = 'green';
   el.textContent = this.outputHolder;
-  console.log("very good: " + this.outputHolder);
 
   setTimeout( function () {
     document.getElementById('correct').style.visibility = 'hidden';
@@ -229,7 +213,6 @@ display.showWrong = function() {
   el.style.visibility = 'visible';
   el.style.color = 'red';
   el.textContent = "Wrong!!";
-  //console.log("very good: " + this.outputHolder);
 
   setTimeout( function () {document.getElementById('correct').style.visibility = 'hidden';}, 2000);
 

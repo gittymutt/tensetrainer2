@@ -188,13 +188,11 @@ var form = {
     presProgQ.negative = false;
     presProgQ.question = true;
 
-    this.formArray = [
-      //simplePresAffirm, simplePresNeg, simplePresQ,
-                  //    simplePastAffirm, simplePastNeg, simplePastQ,
-                       presProgAffirm, presProgNeg, presProgQ];
+    this.formArray = [simplePresAffirm, simplePresNeg, simplePresQ,
+                      simplePastAffirm, simplePastNeg, simplePastQ,
+                      presProgAffirm, presProgNeg, presProgQ];
 
     this.formName = this.formArray[this.fCount]['name'];
-    ///console.log("form is negative:" + this.formArray[this.fCount]['negative']);
     this.isNegative = this.formArray[this.fCount]['negative'];
     this.isQuestion = this.formArray[this.fCount]['question'];
     return true;
@@ -234,10 +232,6 @@ form.getWord = function () {
     this.formName = this.formArray[this.fCount]['name']; // to display tense and type of sentence
     this.isNegative = this.formArray[this.fCount]['negative'];
     this.isQuestion = this.formArray[this.fCount]['question'];
-    console.log("from form isQuestion" + this.formArray[this.fCount]['question']);
-    //console.log("form is negative:" + this.formArray[this.fCount]['negative']);
-    //console.log(this.formName);
-    //console.log(this.getPosition());
   }
   return wordValue;
 }
