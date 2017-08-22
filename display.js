@@ -8,7 +8,11 @@ var display = {
   currentWord: 0,
   output: [],
   buttonArray: {},
-  outputHolder: ""
+  outputHolder: "",
+  tempIngForm: "",
+  tempSPastForm: "",
+  tempSPresFrom: "",
+  tempF: {}
 
 }
 
@@ -73,15 +77,18 @@ display.setUpButtons = function() {
 
 
 display.buttonPressed = function (userWordID) {
+  console.log("this.outputHolder: " + this.outputHolder);
   var correct = false;
   if (userWordID == this.currentWord) {
 
+
     this.outputWord(userWordID);
+
     if (form.newForm) {
       correct = true;
-
       this.setUpForm();
       this.output = [];
+
 
     }
 
@@ -92,8 +99,17 @@ display.buttonPressed = function (userWordID) {
       display.setUpButtons();
 
     }
-    this.currentWord = form.getWord();
     if (correct) {this.showCorrect();}
+
+    // make a deep copy of form object so that you can display
+    // object data after the non-temp one changes to the
+    // next sentence data
+
+    this.tempF = JSON.parse(JSON.stringify(this.f));
+
+
+    this.currentWord = form.getWord();
+
     return;
   }
   this.showWrong();
@@ -107,15 +123,15 @@ display.setUpForm = function () {
   this.wordsDiv.textContent = this.f.sentence['Subj']+ "/" +
     this.f.BFV;
   if (this.f.isNegative) {
-    console.log("is Negative!!");
+    //console.log("is Negative!!");
     this.wordsDiv.textContent += "/not";
   }
-  console.log("isQuestion: " + this.f.isQuestion);
+  //console.log("isQuestion: " + this.f.isQuestion);
   if (this.f.isQuestion) {
     this.theRestDiv.textContent =
         this.theRestDiv.textContent.slice(0,-1) + "?";
     this.wordsDiv.textContent += "/?"
-    console.log("is question??????");
+    //console.log("is question??????");
   } else {
     this.theRestDiv.textContent =
         this.theRestDiv.textContent.slice(0,-1) + ".";
@@ -125,7 +141,9 @@ display.setUpForm = function () {
 display.outputWord = function(id) {
 
   var currentWord, nextWord, wordCount;
-
+  var SPres = this.tempF.SPres;
+  var SPast = this.tempF.SPast;
+  var ingForm = this.tempF.ingForm;
 
   this.output.push(id);
 
@@ -138,8 +156,8 @@ display.outputWord = function(id) {
 
     // Put words together before displaying them
     if (nextWord == ENUM.s && currentWord == ENUM.BFV) {
-      console.log(this.f.SPres);
-      this.outputDiv.textContent += this.f.SPres;
+      //console.log(this.f.SPres);
+      this.outputDiv.textContent += SPres;
       wordCount++; // advance over the -s so we don't print it
     } else if (currentWord == ENUM.do && nextWord == ENUM.not) {
       this.outputDiv.textContent += "don't";
@@ -151,7 +169,7 @@ display.outputWord = function(id) {
       this.outputDiv.textContent += "didn't";
       wordCount++; // advance over the 'not' so we don't print it
     } else if (currentWord == ENUM.BFV && nextWord == ENUM.ing) {
-      this.outputDiv.textContent += this.f.ingForm;
+      this.outputDiv.textContent += ingForm;
       wordCount++; // advance over the 'not' so we don't print it
     } else if (currentWord == ENUM.is && nextWord == ENUM.not) {
       this.outputDiv.textContent += "isn't";
@@ -160,7 +178,7 @@ display.outputWord = function(id) {
       this.outputDiv.textContent += "aren't";
       wordCount++; // advance over the 'not' so we don't print it
     } else if (currentWord == ENUM.BFV && nextWord == ENUM.ed) {
-      this.outputDiv.textContent += this.f.SPast;
+      this.outputDiv.textContent += SPast;
       wordCount++; // advance over the '-ed' so we don't print it
     } else {
       // capitalize first word
@@ -170,19 +188,27 @@ display.outputWord = function(id) {
         this.outputDiv.textContent +=
               str.charAt(0).toUpperCase() + str.slice(1);
       } else {
-      this.outputDiv.textContent += this.buttonArray[this.output[wordCount]];
+        //console.log("outputHolder(before assign from button):" + this.outputHolder);
+        this.outputDiv.textContent += this.buttonArray[this.output[wordCount]];
       }
     }
+    //alert("outputHolder befor assignfrom div" + this.outputHolder+ this.f.ingForm);
+    //console.log("outputHolder(before assign from div):" + this.outputHolder);
+    console.log(ingForm);
     this.outputHolder = this.outputDiv.textContent;
+    //alert("outputHolder (after assignfrom div)"+ this.outputHolder+this.f.ingForm);
+    //console.log("outputHolder(after assign from div):" + this.outputHolder);
+
     this.outputDiv.textContent += " ";
   }
 
   if (this.f.newForm) {
     this.outputDiv.textContent = "";
   }
-  console.log("Treffer! Output: ");
+  //console.log("Treffer! Output: ");
 }
 
+// show message when user gets to the end of the sentence
 display.showCorrect = function() {
   var el = document.getElementById('correct');
   el.style.visibility = 'visible';

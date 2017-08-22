@@ -14,7 +14,7 @@ display.setUpForm();
 // figure out where to put right sign when sentence is completed
 
 // fix correct sign. It shows next verb before current
-// correct answer
+// correct answer **DONE**
 
 // add verb + ed put together  **ODNE**
 
@@ -29,3 +29,9 @@ display.setUpForm();
 // Add timer
 
 // add options like choose tenses
+
+// fix parseInt prblems in outputWord
+
+// fix end of sentences. It is repeating last One
+
+// contract we are? he is? etc...

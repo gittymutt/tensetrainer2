@@ -188,8 +188,9 @@ var form = {
     presProgQ.negative = false;
     presProgQ.question = true;
 
-    this.formArray = [simplePresAffirm, simplePresNeg, simplePresQ,
-                      simplePastAffirm, simplePastNeg, simplePastQ,
+    this.formArray = [
+      //simplePresAffirm, simplePresNeg, simplePresQ,
+                  //    simplePastAffirm, simplePastNeg, simplePastQ,
                        presProgAffirm, presProgNeg, presProgQ];
 
     this.formName = this.formArray[this.fCount]['name'];
