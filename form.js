@@ -43,7 +43,7 @@ var form = {
            SPast: "broke",
            SPres: "breaks",
            ingForm: "breaking",
-           theRest: "the machine."
+           theRest: "the machine"
         }
         ,
 
@@ -58,7 +58,7 @@ var form = {
           SPast: "skated",
           SPres: "skates",
           ingForm: "skating",
-          theRest: "badly."
+          theRest: "badly"
         },
          {Subj: "he",
           subjNum: ENUM.sing,
@@ -68,7 +68,7 @@ var form = {
           SPast: "broke",
           SPres: "breaks",
           ingForm: "breaking",
-          theRest: "the machine.",
+          theRest: "the machine",
         },
 
         {Subj: "he",
@@ -79,7 +79,7 @@ var form = {
          SPast: "broke",
          SPres: "breaks",
          ingForm: "breaking",
-         theRest: "the Internet.",
+         theRest: "the Internet",
        },
        {Subj: "we",
          subjNum: ENUM.pl,
@@ -89,7 +89,7 @@ var form = {
          SPast: "studied",
          SPres: "studies",
          ingForm: "studying",
-         theRest: "English."
+         theRest: "English"
        }
       ];
 

@@ -9,10 +9,12 @@
 <body>
   <div id="description"></div>
   <div id="words">these are the words</div>
-  <div id="output"></div>
-  <div id="theRest">this is the rest</div>
-  <div id="timeExpr">every day</div>
-  <div id="punctuation">.</div>
+  <div id="output-box">
+    <div id="output"></div>
+    <div id="theRest">this is the rest</div>
+    <div id="time-expr">every day</div>
+    <div id="punctuation">.</div>
+  </div>
   <div id="buttons"></div>
   <div id="correct">Correct!!</div>
   <div id="wrong">Wrong!!</div>
@@ -28,32 +30,29 @@
 empty-cells: show;
 
 #description {
+}
 
-  position: absolute;
-  top: 0%;
-  border-style: dashed;
-  bottom: 80%;
-
+#output-box {
+  display: flex;
+  margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 #output {
-  position: absolute;
-  top: 20%;
-  bottom: 70%;
+  padding-left: .5em;
+  padding-right: .5em;
   border-style: double;
 }
 
 #theRest {
-  position:absolute;
-  top: 30%;
-  bottom: 50%;
-  left: 40%;
+  margin-left: .5em;
+}
+
+#time-expr {
+  margin-left: .5em;
 }
 
 #buttons {
-  position: absolute;
-  top: 50%;
-  bottom: 0%;
 }
 
 #correct {

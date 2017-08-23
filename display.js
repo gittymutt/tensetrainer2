@@ -5,6 +5,8 @@ var display = {
   wordsDiv: document.getElementById('words'),
   descriptionDiv: document.getElementById('description'),
   theRestDiv: document.getElementById('theRest'),
+  punctuationDiv: document.getElementById('punctuation'),
+  timeExprDiv: document.getElementById('time-expr'),
   currentWord: 0,
   output: [],
   buttonArray: {},
@@ -126,13 +128,10 @@ display.setUpForm = function () {
     this.wordsDiv.textContent += "/not";
   }
   if (this.f.isQuestion) {
-    this.theRestDiv.textContent =
-        this.theRestDiv.textContent.slice(0,-1) + "?";
-    this.wordsDiv.textContent += "/?"
-  } else {
-    this.theRestDiv.textContent =
-        this.theRestDiv.textContent.slice(0,-1) + ".";
-  }
+    this.punctuationDiv.textContent = "?";
+  else {
+    this.punctuationDiv.textContent = ".";
+   }
 }
 
 display.outputWord = function(id) {
