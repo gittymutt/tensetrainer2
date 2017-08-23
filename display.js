@@ -84,8 +84,9 @@ display.buttonPressed = function (userWordID) {
 
     if (form.newForm) {
       correct = true;
-      this.setUpForm();
-      this.output = [];
+      if (correct) {this.showCorrect();}
+      //this.setUpForm();
+      //this.output = [];
 
 
     }
@@ -96,7 +97,7 @@ display.buttonPressed = function (userWordID) {
       display.setUpButtons();
 
     }
-    if (correct) {this.showCorrect();}
+
 
     // make a deep copy of form object so that you can display
     // object data after the non-temp one changes to the
@@ -123,7 +124,7 @@ display.setUpForm = function () {
 
   this.descriptionDiv.textContent = form.formName;
   this.timeExprDiv.textContent = this.f.timeExpr;
-  
+
   this.wordsDiv.textContent = this.f.sentence['Subj']+ "/" +
     this.f.BFV;
   if (this.f.isNegative) {
@@ -198,7 +199,7 @@ display.outputWord = function(id) {
   }
 
   if (this.f.newForm) {
-    this.outputDiv.textContent = "";
+    //this.outputDiv.textContent = "";
   }
 }
 
@@ -207,11 +208,16 @@ display.showCorrect = function() {
   var el = document.getElementById('correct');
   el.style.visibility = 'visible';
   el.style.color = 'green';
-  el.textContent = this.outputHolder;
+  // el.textContent = this.outputHolder;
+  el.textContent = "Correct!!";
+
 
   setTimeout( function () {
     document.getElementById('correct').style.visibility = 'hidden';
     //document.getElementById('output'). textContent = "";
+    display.setUpForm();
+    display.output = [];
+    display.outputDiv.textContent = "";
   }, 2000);
 
 
@@ -221,9 +227,11 @@ display.showWrong = function() {
   var el = document.getElementById('correct');
   el.style.visibility = 'visible';
   el.style.color = 'red';
-  el.textContent = "Wrong!!";
+  el.textContent = "No. Try again.";
 
-  setTimeout( function () {document.getElementById('correct').style.visibility = 'hidden';}, 2000);
+  setTimeout( function () {
+    document.getElementById('correct').style.visibility = 'hidden';
+  }, 2000);
 
 
 }
