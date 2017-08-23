@@ -16,7 +16,7 @@ var form = {
   formName: {},
   isNegative: false,
   isQuestion: false,
-  isIrreg: false,
+  isIrreg: false,     // for non be verbs only
   isAction: true,
   SPast: "",
   SPres: "",
@@ -94,6 +94,16 @@ var form = {
          presTE: "every night",
          pastTE: "last night",
          progTE: "at the moment"
+       },
+       {
+         Subj: "Charlie",
+         subjNum: ENUM.sing,
+         BFV: "be",
+         isIrreg: false,
+         isAction: false,
+         theRest: "funny",
+         presTE: "sometimes",
+         pastTE: "two days ago"
        }
       ];
 
@@ -106,6 +116,9 @@ var form = {
    form.getNextSentence = function () {
     var simplePresAffirm, simplePresNeg, simplePresQ;
     var simplePastAffirm, simplePastNeg, simplePastQ;
+    var bePresAffirm, bePresNeg, bePresQ
+    var bePastAffirm, bePastNeg, bePastQ
+
     var presProgAffirm, presProgNeg, presProgQ;
     var pastTE = "yesterday";
     var presTE = "every day";
@@ -160,71 +173,107 @@ var form = {
       case ENUM.pl:
     }
 
+    this.BFV = this.BFV.toLowerCase().trim();
+
+    if (this.BFV === "be") {
+        bePresAffirm = [ENUM.subj, bePresForm];
+        bePresAffirm.name = "Simple present, affirmative";
+        bePresAffirm.negative = false;
+
+        bePresNeg = [ENUM.subj, bePresForm, ENUM.not];
+        bePresNeg.name = "Simple present, affirmative";
+        bePresNeg.negative = true;
+
+        bePresQ = [bePresForm, ENUM.subj];
+        bePresQ.name = "Simple present, question";
+        bePresQ.negative = false;
+        bePresQ.question = true;
+
+        bePresAffirm.timeExpr = bePresNeg.timeExpr = bePresQ.timeExpr = presTE;
+
+        bePastAffirm = [ENUM.subj, bePastForm];
+        bePastAffirm.name = "Simple present, affirmative";
+        bePastAffirm.negative = false;
+
+        bePastNeg = [ENUM.subj, bePastForm, ENUM.not];
+        bePastNeg.name = "Simple present, affirmative";
+        bePastNeg.negative = true;
+
+        bePastQ = [bePastForm, ENUM.subj];
+        bePastQ.name = "Simple present, question";
+        bePastQ.negative = false;
+        bePastQ.question = true;
+
+        bePastAffirm.timeExpr = bePastNeg.timeExpr = bePastQ.timeExpr = pastTE;
 
 
 
-    if (doForm === ENUM.does) {
-        simplePresAffirm = [ENUM.subj, ENUM.BFV, ENUM.s];
+        this.formArray = [bePresAffirm, bePresNeg, bePresQ,
+                          bePastAffirm, bePastNeg, bePastQ];
+
     } else {
-        simplePresAffirm = [ENUM.subj, ENUM.BFV ];
-    }
-    simplePresAffirm.name = "Simple present, affirmative";
-    simplePresAffirm.negative = false;
+      if (doForm === ENUM.does) {
+          simplePresAffirm = [ENUM.subj, ENUM.BFV, ENUM.s];
+      } else {
+          simplePresAffirm = [ENUM.subj, ENUM.BFV ];
+      }
+      simplePresAffirm.name = "Simple present, affirmative";
+      simplePresAffirm.negative = false;
 
-    simplePresNeg = [ENUM.subj, doForm, ENUM.not, ENUM.BFV];
-    simplePresNeg.name = "Simple present, negative";
-    simplePresNeg.negative = true;
+      simplePresNeg = [ENUM.subj, doForm, ENUM.not, ENUM.BFV];
+      simplePresNeg.name = "Simple present, negative";
+      simplePresNeg.negative = true;
 
-    simplePresQ = [doForm, ENUM.subj, ENUM.BFV];
-    simplePresQ.name = "Simple present, yes/no question";
-    simplePresQ.negative = false;
-    simplePresQ.question = true;
+      simplePresQ = [doForm, ENUM.subj, ENUM.BFV];
+      simplePresQ.name = "Simple present, yes/no question";
+      simplePresQ.negative = false;
+      simplePresQ.question = true;
 
-    simplePresAffirm.timeExpr = simplePresNeg.timeExpr = simplePresQ.timeExpr = presTE;
+      simplePresAffirm.timeExpr = simplePresNeg.timeExpr = simplePresQ.timeExpr = presTE;
 
-    if (this.sentence.isIrreg) {
-      simplePastAffirm = [ENUM.subj, ENUM.irreg];
-    } else {
-      simplePastAffirm = [ENUM.subj, ENUM.BFV, ENUM.ed];
-    }
-    simplePastAffirm.name = "Simple past, affirmative";
-    simplePastAffirm.negative = false;
+      if (this.sentence.isIrreg) {
+        simplePastAffirm = [ENUM.subj, ENUM.irreg];
+      } else {
+        simplePastAffirm = [ENUM.subj, ENUM.BFV, ENUM.ed];
+      }
+      simplePastAffirm.name = "Simple past, affirmative";
+      simplePastAffirm.negative = false;
 
-    simplePastNeg = [ENUM.subj, ENUM.did, ENUM.not, ENUM.BFV];
-    simplePastNeg.name = "Simple past, negative";
-    simplePastNeg.negative = true;
+      simplePastNeg = [ENUM.subj, ENUM.did, ENUM.not, ENUM.BFV];
+      simplePastNeg.name = "Simple past, negative";
+      simplePastNeg.negative = true;
 
-    simplePastQ = [ENUM.did, ENUM.subj, ENUM.BFV]
-    simplePastQ.name = "Simple past, question";
-    simplePastQ.negative = false;
-    simplePastQ.question = true;
+      simplePastQ = [ENUM.did, ENUM.subj, ENUM.BFV]
+      simplePastQ.name = "Simple past, question";
+      simplePastQ.negative = false;
+      simplePastQ.question = true;
 
-    simplePastAffirm.timeExpr = simplePastNeg.timeExpr = simplePastQ.timeExpr = pastTE;
+      simplePastAffirm.timeExpr = simplePastNeg.timeExpr = simplePastQ.timeExpr = pastTE;
 
-    presProgAffirm = [ENUM.subj, bePresForm, ENUM.BFV, ENUM.ing];
-    presProgAffirm.name = "Present progressive, affirmative";
-    presProgAffirm.negative = false;
+      presProgAffirm = [ENUM.subj, bePresForm, ENUM.BFV, ENUM.ing];
+      presProgAffirm.name = "Present progressive, affirmative";
+      presProgAffirm.negative = false;
 
-    presProgNeg = [ENUM.subj, bePresForm, ENUM.not, ENUM.BFV, ENUM.ing];
-    presProgNeg.name = "Present progressive, negative";
-    presProgNeg.negative = true;
+      presProgNeg = [ENUM.subj, bePresForm, ENUM.not, ENUM.BFV, ENUM.ing];
+      presProgNeg.name = "Present progressive, negative";
+      presProgNeg.negative = true;
 
-    presProgQ = [bePresForm, ENUM.subj, ENUM.BFV, ENUM.ing];
-    presProgQ.name = "Present progressive, question";
-    presProgQ.negative = false;
-    presProgQ.question = true;
+      presProgQ = [bePresForm, ENUM.subj, ENUM.BFV, ENUM.ing];
+      presProgQ.name = "Present progressive, question";
+      presProgQ.negative = false;
+      presProgQ.question = true;
 
-    presProgAffirm.timeExpr = presProgNeg.timeExpr = presProgQ.timeExpr = progTE;
+      presProgAffirm.timeExpr = presProgNeg.timeExpr = presProgQ.timeExpr = progTE;
 
-    this.formArray = [simplePresAffirm, simplePresNeg, simplePresQ,
-                      simplePastAffirm, simplePastNeg, simplePastQ,
-                      presProgAffirm, presProgNeg, presProgQ];
-
-    this.formName = this.formArray[this.fCount]['name'];
-    this.isNegative = this.formArray[this.fCount]['negative'];
-    this.isQuestion = this.formArray[this.fCount]['question'];
-    this.timeExpr = this.formArray[this.fCount]['timeExpr'];
-    return true;
+      this.formArray = [simplePresAffirm, simplePresNeg, simplePresQ,
+                        simplePastAffirm, simplePastNeg, simplePastQ,
+                        presProgAffirm, presProgNeg, presProgQ];
+      }
+      this.formName = this.formArray[this.fCount]['name'];
+      this.isNegative = this.formArray[this.fCount]['negative'];
+      this.isQuestion = this.formArray[this.fCount]['question'];
+      this.timeExpr = this.formArray[this.fCount]['timeExpr'];
+      return true;
   }
 
 
