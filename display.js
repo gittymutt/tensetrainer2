@@ -108,13 +108,19 @@ display.buttonPressed = function (userWordID) {
 
     this.currentWord = form.getWord();
 
+
     return;
   }
   this.showWrong();
 }
 
 display.setUpForm = function () {
-
+  // temporarily end game
+  if (this.f.done) {
+    console.log("all done!! good job.");
+    document.write("You have won the whole Internet");
+    return;
+  }
   this.descriptionDiv.textContent = form.formName;
 
   this.wordsDiv.textContent = this.f.sentence['Subj']+ "/" +

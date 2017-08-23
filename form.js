@@ -33,7 +33,8 @@ var form = {
   form.init = function () {
     // get this from another class later
     this.sentenceCollection =
-        [{
+        [
+          {
           Subj: "he",
            subjNum: ENUM.sing,
            BFV: "break",
@@ -43,7 +44,8 @@ var form = {
            SPres: "breaks",
            ingForm: "breaking",
            theRest: "the machine."
-        },
+        }
+        ,
 
 
 
