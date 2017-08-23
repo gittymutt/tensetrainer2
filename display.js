@@ -9,9 +9,6 @@ var display = {
   output: [],
   buttonArray: {},
   outputHolder: "",
-  tempIngForm: "",
-  tempSPastForm: "",
-  tempSPresFrom: "",
   tempF: {}
 
 }
