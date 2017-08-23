@@ -114,24 +114,31 @@ display.buttonPressed = function (userWordID) {
 }
 
 display.setUpForm = function () {
-  // temporarily end game
+  // end game of game
   if (this.f.done) {
     console.log("all done!! good job.");
     document.write("You have won the whole Internet");
     return;
   }
-  this.descriptionDiv.textContent = form.formName;
 
+  this.descriptionDiv.textContent = form.formName;
+  this.timeExprDiv.textContent = this.f.timeExpr;
+  
   this.wordsDiv.textContent = this.f.sentence['Subj']+ "/" +
     this.f.BFV;
   if (this.f.isNegative) {
     this.wordsDiv.textContent += "/not";
   }
+
   if (this.f.isQuestion) {
     this.punctuationDiv.textContent = "?";
+  }
   else {
     this.punctuationDiv.textContent = ".";
    }
+
+
+
 }
 
 display.outputWord = function(id) {

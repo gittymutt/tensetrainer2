@@ -22,6 +22,7 @@ var form = {
   SPres: "",
   ingForm: "",
   theRest: "",
+  timeExpr: "",
   BFV: ""
 
 };
@@ -160,6 +161,8 @@ var form = {
     simplePresQ.negative = false;
     simplePresQ.question = true;
 
+    simplePresAffirm.timeExpr = simplePresNeg.timeExpr = simplePresQ.timeExpr = "every day";
+
     if (this.sentence.isIrreg) {
       simplePastAffirm = [ENUM.subj, ENUM.irreg];
     } else {
@@ -177,6 +180,8 @@ var form = {
     simplePastQ.negative = false;
     simplePastQ.question = true;
 
+    simplePastAffirm.timeExpr = simplePastNeg.timeExpr = simplePastQ.timeExpr = "yesterday";
+
     presProgAffirm = [ENUM.subj, bePresForm, ENUM.BFV, ENUM.ing];
     presProgAffirm.name = "Present progressive, affirmative";
     presProgAffirm.negative = false;
@@ -190,6 +195,8 @@ var form = {
     presProgQ.negative = false;
     presProgQ.question = true;
 
+    presProgAffirm.timeExpr = presProgNeg.timeExpr = presProgQ.timeExpr = "now";
+
     this.formArray = [simplePresAffirm, simplePresNeg, simplePresQ,
                       simplePastAffirm, simplePastNeg, simplePastQ,
                       presProgAffirm, presProgNeg, presProgQ];
@@ -197,6 +204,7 @@ var form = {
     this.formName = this.formArray[this.fCount]['name'];
     this.isNegative = this.formArray[this.fCount]['negative'];
     this.isQuestion = this.formArray[this.fCount]['question'];
+    this.timeExpr = this.formArray[this.fCount]['timeExpr'];
     return true;
   }
 
@@ -234,6 +242,7 @@ form.getWord = function () {
     this.formName = this.formArray[this.fCount]['name']; // to display tense and type of sentence
     this.isNegative = this.formArray[this.fCount]['negative'];
     this.isQuestion = this.formArray[this.fCount]['question'];
+    this.timeExpr = this.formArray[this.fCount]['timeExpr'];
   }
   return wordValue;
 }
