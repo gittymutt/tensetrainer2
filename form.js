@@ -90,7 +90,10 @@ var form = {
          SPast: "studied",
          SPres: "studies",
          ingForm: "studying",
-         theRest: "English"
+         theRest: "English",
+         presTE: "every night",
+         pastTE: "last night",
+         progTE: "at the moment"
        }
       ];
 
@@ -104,6 +107,9 @@ var form = {
     var simplePresAffirm, simplePresNeg, simplePresQ;
     var simplePastAffirm, simplePastNeg, simplePastQ;
     var presProgAffirm, presProgNeg, presProgQ;
+    var pastTE = "yesterday";
+    var presTE = "every day";
+    var progTE = "now";
 
     var doForm = ENUM.do;
     var bePresForm = ENUM.are;
@@ -124,6 +130,19 @@ var form = {
     this.BFV = this.sentence['BFV'];
     this.isIrreg = this.sentence['isIrreg'];
     this.SPres = this.sentence['SPres'];
+
+    if (this.sentence['presTE']) {
+      presTE = this.sentence['presTE'];
+    }
+
+    if (this.sentence['pastTE']) {
+      pastTE = this.sentence['pastTE'];
+    }
+
+    if (this.sentence['progTE']) {
+      progTE = this.sentence['progTE'];
+    }
+
 
 
     switch(this.sentence.subjNum) {
@@ -161,7 +180,7 @@ var form = {
     simplePresQ.negative = false;
     simplePresQ.question = true;
 
-    simplePresAffirm.timeExpr = simplePresNeg.timeExpr = simplePresQ.timeExpr = "every day";
+    simplePresAffirm.timeExpr = simplePresNeg.timeExpr = simplePresQ.timeExpr = presTE;
 
     if (this.sentence.isIrreg) {
       simplePastAffirm = [ENUM.subj, ENUM.irreg];
@@ -180,7 +199,7 @@ var form = {
     simplePastQ.negative = false;
     simplePastQ.question = true;
 
-    simplePastAffirm.timeExpr = simplePastNeg.timeExpr = simplePastQ.timeExpr = "yesterday";
+    simplePastAffirm.timeExpr = simplePastNeg.timeExpr = simplePastQ.timeExpr = pastTE;
 
     presProgAffirm = [ENUM.subj, bePresForm, ENUM.BFV, ENUM.ing];
     presProgAffirm.name = "Present progressive, affirmative";
@@ -195,7 +214,7 @@ var form = {
     presProgQ.negative = false;
     presProgQ.question = true;
 
-    presProgAffirm.timeExpr = presProgNeg.timeExpr = presProgQ.timeExpr = "now";
+    presProgAffirm.timeExpr = presProgNeg.timeExpr = presProgQ.timeExpr = progTE;
 
     this.formArray = [simplePresAffirm, simplePresNeg, simplePresQ,
                       simplePastAffirm, simplePastNeg, simplePastQ,

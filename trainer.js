@@ -20,6 +20,8 @@ display.setUpForm();
 
 // add be verbs
 
+// be sure to turn off ingForm if the verb is non action
+
 // Fix layout and make mobile first friendly
 
 // add time expressions for each tense
