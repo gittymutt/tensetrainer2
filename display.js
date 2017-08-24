@@ -1,5 +1,6 @@
 var display = {
   f: {},
+  buttonDiv: document.getElementById('buttons'),
   buttonDiv1: document.getElementById('buttons1'),
   buttonDiv2: document.getElementById('buttons2'),
   buttonDiv3: document.getElementById('buttons3'),
@@ -305,13 +306,33 @@ display.showCorrect = function() {
 
 display.showWrong = function() {
   var el = document.getElementById('correct');
+
+
+  this.buttonsEnabled(false);
   el.style.visibility = 'visible';
   el.style.color = 'red';
   el.textContent = "No. Try again.";
 
   setTimeout( function () {
     document.getElementById('correct').style.visibility = 'hidden';
+    display.buttonsEnabled(true);
   }, 2000);
 
 
+}
+
+display.buttonsEnabled = function (enabled) {
+  var buttons = this.buttonDiv.getElementsByTagName('button');
+  var length = buttons.length;
+  var i, color = "";
+
+  if (enabled != false) {enabled = true;}
+
+  if (!enabled) {color = "red";}
+
+  for (i = 0;i<length;i++) {
+    console.log(buttons[i]);
+    buttons[i].disabled = !enabled;
+    buttons[i].style.backgroundColor = color;
+  }
 }
