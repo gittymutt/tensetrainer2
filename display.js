@@ -20,6 +20,7 @@ var display = {
 
 }
 
+// must be initialized with form object as a parameter
 display.init = function(myForm) {
   this.f = myForm;
 }
@@ -170,13 +171,7 @@ display.buttonPressed = function (userWordID) {
 
 
     }
-
-    if (form.newSentence) {
-
-      display.init(form);
-      display.setUpButtons();
-
-    }
+    console.log("form new sentence from buttonPressed: " + form.newSentence);
 
 
     // make a deep copy of form object so that you can display
@@ -287,18 +282,27 @@ display.outputWord = function(id) {
 // show message when user gets to the end of the sentence
 display.showCorrect = function() {
   var el = document.getElementById('correct');
+  var that = this; // make an reference to this object for setTimeout
+
   el.style.visibility = 'visible';
   el.style.color = 'green';
   // el.textContent = this.outputHolder;
   el.textContent = "Correct!!";
+  this.buttonsEnabled(false);
 
 
   setTimeout( function () {
     document.getElementById('correct').style.visibility = 'hidden';
     //document.getElementById('output'). textContent = "";
+    console.log(that.tempF.newSentence);
     display.setUpForm();
     display.output = [];
     display.outputDiv.textContent = "";
+    if (that.tempF.newSentence) {
+      that.init(form);
+      that.setUpButtons();
+    }
+    display.buttonsEnabled(true);
   }, 2000);
 
 
@@ -306,7 +310,6 @@ display.showCorrect = function() {
 
 display.showWrong = function() {
   var el = document.getElementById('correct');
-
 
   this.buttonsEnabled(false);
   el.style.visibility = 'visible';
@@ -316,9 +319,7 @@ display.showWrong = function() {
   setTimeout( function () {
     document.getElementById('correct').style.visibility = 'hidden';
     display.buttonsEnabled(true);
-  }, 2000);
-
-
+  }, 1000);
 }
 
 display.buttonsEnabled = function (enabled) {
@@ -327,11 +328,8 @@ display.buttonsEnabled = function (enabled) {
   var i, color = "";
 
   if (enabled != false) {enabled = true;}
-
-  if (!enabled) {color = "red";}
-
+  if (!enabled) {color = "#eee";}
   for (i = 0;i<length;i++) {
-    console.log(buttons[i]);
     buttons[i].disabled = !enabled;
     buttons[i].style.backgroundColor = color;
   }
