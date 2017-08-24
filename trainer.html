@@ -15,7 +15,12 @@
     <div id="time-expr">every day</div>
     <div id="punctuation">.</div>
   </div>
-  <div id="buttons"></div>
+  <div id="buttons">
+    <div id="buttons1"></div>
+    <div id="buttons2"></div>
+    <div id="buttons3"></div>
+    <div id="buttons4"></div>
+  </div>
   <div id="correct">Correct!!</div>
   <div id="wrong">Wrong!!</div>
 
@@ -53,6 +58,17 @@ empty-cells: show;
 }
 
 #buttons {
+
+  display: flex;
+}
+
+#buttons1, #buttons2, #buttons3, #buttons4 {
+  border-style: solid;
+  flex-direction: row;
+}
+
+button {
+  display: block;
 }
 
 #correct {

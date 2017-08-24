@@ -6,9 +6,7 @@ display.setUpForm();
 
 // to do:
 
-// time expression is changing to next form in the display
-// before last word in input
-
+// make button stuff more DRY
 // Make right/wrong signs
 // figure out where to put right sign when sentence is completed
 
