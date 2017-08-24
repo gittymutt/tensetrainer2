@@ -17,7 +17,6 @@ var display = {
 
 display.init = function(myForm) {
   this.f = myForm;
-  this.theRestDiv.textContent = this.f.theRest;
 }
 
 display.setUpButtons = function() {
@@ -122,6 +121,7 @@ display.setUpForm = function () {
     return;
   }
 
+  this.theRestDiv.textContent = this.f.theRest;
   this.descriptionDiv.textContent = form.formName;
   this.timeExprDiv.textContent = this.f.timeExpr;
 

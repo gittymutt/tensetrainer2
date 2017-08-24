@@ -23,7 +23,8 @@ var form = {
   ingForm: "",
   theRest: "",
   timeExpr: "",
-  BFV: ""
+  BFV: "",
+  penultimate: false
 
 };
 
@@ -208,8 +209,10 @@ var form = {
 
 
 
-        this.formArray = [bePresAffirm, bePresNeg, bePresQ,
-                          bePastAffirm, bePastNeg, bePastQ];
+        this.formArray = [bePresAffirm, bePresNeg, bePresQ
+                          //,
+                          //bePastAffirm, bePastNeg, bePastQ
+                        ];
 
     } else {
       if (doForm === ENUM.does) {
@@ -290,10 +293,13 @@ form.getWord = function () {
 
   this.newSentence = false;
   this.newForm = false;
-
+  this.penultimate = false;
 
   wordValue = this.formArray[this.fCount][this.wCount];
   this.wCount++;
+  if (this.wCount === this.formArray[this.fCount].length-1) {
+    this.penultimate = true;
+  }
   if (this.wCount === this.formArray[this.fCount].length) {
     this.wCount = 0;
     this.newForm = true;
