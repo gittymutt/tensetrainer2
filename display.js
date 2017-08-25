@@ -309,7 +309,7 @@ display.showCorrect = function() {
       that.setUpButtons();
     }
     display.buttonsEnabled(true);
-  }, 2000);
+  }, 1000);
 
 
 }
@@ -320,7 +320,7 @@ display.showWrong = function() {
   this.buttonsEnabled(false);
   el.style.visibility = 'visible';
   el.style.color = 'red';
-  el.textContent = "No. Try again.";
+  el.textContent = "Try again.";
 
   setTimeout( function () {
     document.getElementById('correct').style.visibility = 'hidden';
