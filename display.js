@@ -198,7 +198,8 @@ display.setUpForm = function () {
   }
 
   this.theRestDiv.textContent = this.f.theRest;
-  this.descriptionDiv.textContent = form.formName;
+  // this.descriptionDiv.textContent = form.formName;
+  this.descriptionDiv.innerHTML = "<h3>" + form.formName + "</h3>";
   this.timeExprDiv.textContent = this.f.timeExpr;
 
   this.wordsDiv.textContent = this.f.sentence['Subj']+ "/" +
