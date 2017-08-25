@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Tense Trainer 2</title>
-
+<meta name=viewport content='width=device-width, initial-scale=1'>
 
 </head>
 
@@ -32,9 +32,21 @@
 <script src="display.js"></script>
 <script src="trainer.js"></script>
 <style>
-empty-cells: show;
 
+div {
+  width: auto ;
+}
+
+button {
+  -webkit-appearance: none;
+  border: solid;
+  display: block;
+  width: 100%;
+  height: 25px;
+}
 #description {
+  font-size: 5vw;
+  margin-bottom: 1em;
 }
 
 #output-box {
@@ -57,22 +69,26 @@ empty-cells: show;
   margin-left: .5em;
 }
 
-#buttons {
+#punctuation {
+}
 
+#buttons {
+  position: absolute;
+  bottom: 0;
+  top: 50%;
+  height: 50%;
   display: flex;
+  width: 100%;
 }
 
 #buttons1, #buttons2, #buttons3, #buttons4 {
-  border-style: solid;
-  flex-direction: row;
-}
-
-button {
-  display: block;
+  width: 100%;
+  //border-style: solid;
+  //flex-direction: row;
 }
 
 #correct {
-  font-size: 6em;
+  font-size: 4em;
   color: green;
   visibility: hidden;
   z-index: 1000;
