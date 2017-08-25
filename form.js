@@ -210,8 +210,8 @@ var form = {
 
 
         this.formArray = [bePresAffirm, bePresNeg, bePresQ
-                          //,
-                          //bePastAffirm, bePastNeg, bePastQ
+                          ,
+                          bePastAffirm, bePastNeg, bePastQ
                         ];
 
     } else {

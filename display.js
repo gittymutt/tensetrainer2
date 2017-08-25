@@ -258,6 +258,12 @@ display.outputWord = function(id) {
     } else if (currentWord == ENUM.BFV && nextWord == ENUM.ed) {
       this.outputDiv.textContent += SPast;
       wordCount++; // advance over the '-ed' so we don't print it
+    } else if (currentWord == ENUM.was && nextWord == ENUM.not) {
+      this.outputDiv.textContent += "wasn't";
+      wordCount++; // advance over the '-ed' so we don't print it
+    } else if (currentWord == ENUM.were && nextWord == ENUM.not) {
+      this.outputDiv.textContent += "weren't";
+      wordCount++; // advance over the '-ed' so we don't print it
     } else {
       // capitalize first word
       if (parseInt(wordCount) === 0) {
