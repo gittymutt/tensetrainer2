@@ -10,8 +10,6 @@ Web application for ESL students to practice forming verb tenses.
 // Make right/wrong signs
 // figure out where to put right sign when sentence is completed
 
-// contract was not and were not
-
 // be sure to turn off ingForm if the verb is non action
 
 // Fix layout and make mobile first friendly
