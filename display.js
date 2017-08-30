@@ -205,7 +205,8 @@ display.setUpForm = function () {
   this.wordsDiv.textContent = this.f.sentence['Subj']+ "/" +
     this.f.BFV;
   if (this.f.isNegative) {
-    this.wordsDiv.textContent += "/not";
+    this.wordsDiv.innerHTML += '/<span class="red">not</span>';
+    //this.wordsDiv.textContent += "/not";
   }
 
   if (this.f.isQuestion) {
