@@ -37,7 +37,7 @@ var form = {
     this.sentenceCollection =
         [
           {
-          Subj: "he",
+          Subj: "the boy",
            subjNum: ENUM.sing,
            BFV: "break",
            isIrreg: true,
@@ -45,43 +45,57 @@ var form = {
            SPast: "broke",
            SPres: "breaks",
            ingForm: "breaking",
-           theRest: "the machine"
+           theRest: "his toy"
         }
         ,
 
 
 
 
-          {Subj: "Poseurs",
+          {Subj: "the monks",
           subjNum: ENUM.pl,
-          BFV: "skate",
-          isIrreg: false,
-          isAction: true,
-          SPast: "skated",
-          SPres: "skates",
-          ingForm: "skating",
-          theRest: "badly"
-        },
-         {Subj: "he",
-          subjNum: ENUM.sing,
-          BFV: "break",
+          BFV: "sing",
           isIrreg: true,
           isAction: true,
-          SPast: "broke",
-          SPres: "breaks",
-          ingForm: "breaking",
-          theRest: "the machine",
+          SPast: "sang",
+          SPres: "sings",
+          ingForm: "singing",
+          theRest: "badly"
+        },
+         {Subj: "my dog",
+          subjNum: ENUM.sing,
+          BFV: "eat",
+          isIrreg: true,
+          isAction: true,
+          SPast: "ate",
+          SPres: "eats",
+          ingForm: "eating",
+          theRest: "meat",
+
         },
 
-        {Subj: "he",
-         subjNum: ENUM.sing,
-         BFV: "break",
+        {Subj: "we",
+         subjNum: ENUM.pl,
+         BFV: "ride",
          isIrreg: true,
          isAction: true,
-         SPast: "broke",
-         SPres: "breaks",
-         ingForm: "breaking",
-         theRest: "the Internet",
+         SPast: "rode",
+         SPres: "rides",
+         ingForm: "riding",
+         theRest: "our bikes",
+         presTE: "every weekend",
+         pastTE: "last weekend",
+         progTE: "at the moment"
+       },
+       {
+         Subj: "I",
+         subjNum: ENUM.I,
+         BFV: "be",
+         isIrreg: false,
+         isAction: false,
+         theRest: "nervous",
+         presTE: "now",
+         pastTE: "an hour ago"
        },
        {Subj: "we",
          subjNum: ENUM.pl,
@@ -162,6 +176,7 @@ var form = {
     switch(this.sentence.subjNum) {
       case ENUM.I:
         bePresForm = ENUM.am;
+        bePastForm = ENUM.was;
         break;
 
       case ENUM.sing:
