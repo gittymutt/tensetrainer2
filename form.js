@@ -197,7 +197,7 @@ var form = {
         bePresAffirm.negative = false;
 
         bePresNeg = [ENUM.subj, bePresForm, ENUM.not];
-        bePresNeg.name = "Simple present, affirmative";
+        bePresNeg.name = "Simple present, negative";
         bePresNeg.negative = true;
 
         bePresQ = [bePresForm, ENUM.subj];
@@ -208,15 +208,15 @@ var form = {
         bePresAffirm.timeExpr = bePresNeg.timeExpr = bePresQ.timeExpr = presTE;
 
         bePastAffirm = [ENUM.subj, bePastForm];
-        bePastAffirm.name = "Simple present, affirmative";
+        bePastAffirm.name = "Simple past, affirmative";
         bePastAffirm.negative = false;
 
         bePastNeg = [ENUM.subj, bePastForm, ENUM.not];
-        bePastNeg.name = "Simple present, affirmative";
+        bePastNeg.name = "Simple past, negative";
         bePastNeg.negative = true;
 
         bePastQ = [bePastForm, ENUM.subj];
-        bePastQ.name = "Simple present, question";
+        bePastQ.name = "Simple past, question";
         bePastQ.negative = false;
         bePastQ.question = true;
 
