@@ -86,10 +86,10 @@ display.setUpButtons = function() {
     arr = [ENUM.subj];
 
     for (var item in arr) {
-        var btn = document.createElement("Button");
-        btn.textContent = display.buttonArray[arr[item]];
+        var btn = document.createElement("div");
+        let textNode = document.createTextNode(display.buttonArray[arr[item]]);
+        btn.appendChild(textNode);
         console.log(arr[item]);
-        console.log("textContent: " + btn.textContent);
         btn.onclick = (function(i){
           return function(){
             display.buttonPressed(i);
@@ -101,16 +101,16 @@ display.setUpButtons = function() {
     arr = [ENUM.is, ENUM.am, ENUM.are, ENUM.was,
             ENUM.were, ENUM.do, ENUM.does, ENUM.did];
     for (var item in arr) {
-        var btn = document.createElement("Button");
-        btn.textContent = display.buttonArray[arr[item]];
-        console.log(arr[item]);
-        console.log("textContent: " + btn.textContent);
-        btn.onclick = (function(i){
-          return function(){
-            display.buttonPressed(i);
-          }
-        })(arr[item]);
-    display.buttonDiv2.appendChild(btn);
+      var btn = document.createElement("div");
+      let textNode = document.createTextNode(display.buttonArray[arr[item]]);
+      btn.appendChild(textNode);
+      console.log(arr[item]);
+      btn.onclick = (function(i){
+        return function(){
+          display.buttonPressed(i);
+        }
+      })(arr[item]);
+  display.buttonDiv2.appendChild(btn);
     };
 
     arr = [ENUM.BFV];
@@ -122,30 +122,30 @@ display.setUpButtons = function() {
 
     //  ENUM.not];
     for (var item in arr) {
-        var btn = document.createElement("Button");
-        btn.textContent = display.buttonArray[arr[item]];
-        console.log(arr[item]);
-        console.log("textContent: " + btn.textContent);
-        btn.onclick = (function(i){
-          return function(){
-            display.buttonPressed(i);
-          }
-        })(arr[item]);
-    display.buttonDiv3.appendChild(btn);
+      var btn = document.createElement("div");
+      let textNode = document.createTextNode(display.buttonArray[arr[item]]);
+      btn.appendChild(textNode);
+      console.log(arr[item]);
+      btn.onclick = (function(i){
+        return function(){
+          display.buttonPressed(i);
+        }
+      })(arr[item]);
+  display.buttonDiv3.appendChild(btn);
     };
 
     arr = [ENUM.s, ENUM.ing, ENUM.ed];
     for (var item in arr) {
-        var btn = document.createElement("Button");
-        btn.textContent = display.buttonArray[arr[item]];
-        console.log(arr[item]);
-        console.log("textContent: " + btn.textContent);
-        btn.onclick = (function(i){
-          return function(){
-            display.buttonPressed(i);
-          }
-        })(arr[item]);
-    display.buttonDiv4.appendChild(btn);
+      var btn = document.createElement("div");
+      let textNode = document.createTextNode(display.buttonArray[arr[item]]);
+      btn.appendChild(textNode);
+      console.log(arr[item]);
+      btn.onclick = (function(i){
+        return function(){
+          display.buttonPressed(i);
+        }
+      })(arr[item]);
+  display.buttonDiv4.appendChild(btn);
     };
 
   // Get the first word out of form before first

@@ -79,14 +79,29 @@ button {
   height: 50%;
   display: flex;
   width: 100%;
+  flex-grow: 1 1;
 }
 
 #buttons1, #buttons2, #buttons3, #buttons4 {
   width: 100%;
-  //border-style: solid;
-  //flex-direction: row;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1 1;
+  align-items: stretch;
+  justify-content: center;
 }
 
+#buttons1 > div, #buttons2 > div, #buttons3 > div, #buttons4 > div {
+  height: 100%;
+  text-align: center;
+  margin: 3px;
+  border-radius: 4px;
+  background-color: rgba(60,0, 60, 0.3);
+  justify-content: center;
+  font-size: 2vw;
+  display: flex;
+  align-items: center;
+}
 #correct {
   font-size: 4em;
   color: green;
