@@ -3,27 +3,33 @@
 <head>
 <title>Tense Trainer 2</title>
 <meta name=viewport content='width=device-width, initial-scale=1'>
-
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div id="description"></div>
-  <div id="words">these are the words</div>
-  <div id="output-box">
-    <div id="output"></div>
-    <div id="theRest">this is the rest</div>
-    <div id="time-expr">every day</div>
-    <div id="punctuation">.</div>
-  </div>
-  <div id="buttons">
-    <div id="buttons1"></div>
-    <div id="buttons2"></div>
-    <div id="buttons3"></div>
-    <div id="buttons4"></div>
-  </div>
-  <div id="correct">Correct!!</div>
-  <div id="wrong">Wrong!!</div>
-
+  <div id="container">
+    <a href="https://youtu.be/aowDl_DOzR0" id="help-link">HELP</a>
+    <div id="display-container">
+      <div id="words">these are the words</div>
+      <div id="output-box">
+        <div id="output"></div>
+        <div id="theRest">this is the rest</div>
+        <div id="time-expr">every day</div>
+        <div id="punctuation">.</div>
+      </div>
+      <div id="description"></div>
+      
+    </div>
+    <div id="buttons">
+      <div id="buttons1"></div>
+      <div id="buttons2"></div>
+      <div id="buttons3"></div>
+      <div id="buttons4"></div>
+    </div>
+    <div id="correct">Correct!!</div>
+    <div id="wrong">Wrong!!</div>
+    
+</div>
 
 </body>
 
@@ -31,93 +37,5 @@
 <script src="form.js"></script>
 <script src="display.js"></script>
 <script src="trainer.js"></script>
-<style>
 
-div {
-  width: auto ;
-}
-
-button {
-  -webkit-appearance: none;
-  border: solid;
-  display: block;
-  width: 100%;
-  height: 25px;
-}
-#description {
-  font-size: 5vw;
-  margin-bottom: 1em;
-}
-
-#output-box {
-  display: flex;
-  margin-bottom: 1em;
-  margin-top: 1em;
-}
-
-#output {
-  padding-left: .5em;
-  padding-right: .5em;
-  border-style: double;
-}
-
-#theRest {
-  margin-left: .5em;
-}
-
-#time-expr {
-  margin-left: .5em;
-}
-
-#punctuation {
-}
-
-#buttons {
-  position: absolute;
-  bottom: 0;
-  top: 50%;
-  height: 50%;
-  display: flex;
-  width: 100%;
-  flex-grow: 1 1;
-}
-
-#buttons1, #buttons2, #buttons3, #buttons4 {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1 1;
-  align-items: stretch;
-  justify-content: center;
-}
-
-#buttons1 > div, #buttons2 > div, #buttons3 > div, #buttons4 > div {
-  height: 100%;
-  text-align: center;
-  margin: 3px;
-  border-radius: 4px;
-  background-color: rgba(60,0, 60, 0.3);
-  justify-content: center;
-  font-size: 2vw;
-  display: flex;
-  align-items: center;
-}
-#correct {
-  font-size: 4em;
-  color: green;
-  visibility: hidden;
-  z-index: 1000;
-}
-
-#wrong {
-  font-size: 6em;
-  color: red;
-  visibility: hidden;
-}
-
-.red {
-  color: red;
-  font-size: 1.5em;
-}
-</style>
 </html>
