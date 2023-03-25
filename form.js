@@ -97,15 +97,15 @@ var form = {
          presTE: "now",
          pastTE: "an hour ago"
        },
-       {Subj: "we",
-         subjNum: ENUM.pl,
-         BFV: "study",
+       {Subj: "he",
+         subjNum: ENUM.sing,
+         BFV: "play",
          isIrreg: false,
          isAction: true,
-         SPast: "studied",
-         SPres: "studies",
-         ingForm: "studying",
-         theRest: "English",
+         SPast: "played",
+         SPres: "plays",
+         ingForm: "playing",
+         theRest: "soccer",
          presTE: "every night",
          pastTE: "last night",
          progTE: "at the moment"
@@ -116,8 +116,8 @@ var form = {
          BFV: "be",
          isIrreg: false,
          isAction: false,
-         theRest: "funny",
-         presTE: "sometimes",
+         theRest: "hungry",
+         presTE: "now",
          pastTE: "two days ago"
        }
       ];
