@@ -4,7 +4,7 @@ Web application for ESL students to practice forming verb tenses.
 
 HTML, CSS, JavaScript – English grammar activity for English learners to practice forming sentences. Used in classroom activities or independent study to exercise students’ ability to do subject/verb agreement and chose the correct verb tense. 
 
-https://petersenglish.nyc/tensetrainer/trainer.html
+https://www.petersenglish.nyc/tensetrainer2/
 
 // to do:
 
